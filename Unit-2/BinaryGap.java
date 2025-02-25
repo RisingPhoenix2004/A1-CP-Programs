@@ -1,3 +1,6 @@
+
+import java.util.Scanner;
+
 /*You are given a positive integer n. 
 Your task is to determine the longest distance between any two adjacent 1s in its binary representation.
 
@@ -44,3 +47,25 @@ Explanation:
 Binary representation of 8 is "1000".
 There is only one 1, so no adjacent pairs exist.
 Output is 0. */
+public class BinaryGap {
+    static int binaryGap(int n) {
+        int count=0;
+        int max=Integer.MIN_VALUE;
+        while(n>0){
+            if((n&1)==1){
+                max=Math.max(count,max);
+                count=1;
+            }
+            else if(count>0){
+                count++;
+            }
+            n=n>>1;
+        }
+        return max;
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        System.out.println(binaryGap(n));
+    }
+}
