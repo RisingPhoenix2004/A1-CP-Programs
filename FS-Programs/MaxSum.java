@@ -1,4 +1,3 @@
-package day14;
 /*Mr.Sharvanand is playing with array of integers, his task is to find largest sum. The sum is calculated by adding individual products( multiplying each element of array with its position) and every time rotate nums in clockwise direction, like this find n different  sums if there are n elements in an array, finally return the largest of these sums. Help sharvanand to find largest sum.  
 you are given an integer array nums of length n.
 
