@@ -54,3 +54,34 @@ Constraints:
 1 <= time.length <= 10^5
 1 <= time[i], totalTrips <= 10^7
  */
+import java.util.*;
+public class BinaryTrips {
+    static long minimumTime(int[] time, int totalTrips) {
+        long left = 1;
+        long right = (long) Arrays.stream(time).min().getAsInt() * totalTrips;
+        while (left < right) {
+            long mid = left + (right - left) / 2;
+            long trips = 0;
+            for (int t : time) {
+                trips += mid / t;
+                if (trips >= totalTrips) break;
+            }
+            if (trips >= totalTrips) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] time = new int[n];
+        for (int i = 0; i < n; i++) {
+            time[i] = sc.nextInt();
+        }
+        int totalTrips = sc.nextInt();
+        System.out.println(minimumTime(time, totalTrips));
+    }
+}
