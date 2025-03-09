@@ -37,3 +37,30 @@
 // Sample Output-2: 
 // ----------------
 // 4
+import java.util.*;
+public class HammingDistance {
+    static int sumOfBitDifferences(int[] arr) {
+        int totalSum = 0;
+        int n = arr.length;
+        for (int i = 0; i < 32; i++) {
+            int countOnes = 0;
+            for (int num : arr) {
+                if ((num & (1 << i)) != 0) {
+                    countOnes++;
+                }
+            }
+            int countZeros = n - countOnes;
+            totalSum += countOnes * countZeros;
+        }
+        return totalSum;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+        System.out.println(sumOfBitDifferences(arr));
+    }
+}
