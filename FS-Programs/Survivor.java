@@ -45,3 +45,20 @@ Explanations:
 --------------
 The persons at positions 3, 6, 2, 7, 5, and 1 are killed in order, 
 and the person at position 4 survives. */
+import java.util.*;
+class Survivor{
+    static int findSurvivor(int n,int k){
+        if(n==1){
+            return n;
+        }
+        else{
+            return (findSurvivor(n-1,k)+k-1)%n+1;
+        }
+    }
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int k=sc.nextInt();
+        System.out.println(findSurvivor(n,k));
+    }
+}

@@ -50,3 +50,45 @@ n == customers.length == grumpy.length
 grumpy[i] is either 0 or 1.
 
  */
+import java.util.*;
+
+public class GrumpySlidingWindow{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        for(int i=0;i<n;i++){
+            a[i] = sc.nextInt();
+        }
+        int[] g = new int[n];
+        for(int i=0;i<n;i++){
+            g[i] = sc.nextInt();
+        }
+        int k = sc.nextInt();
+        System.out.println(NoGrumpy(n,a,g,k));
+    }
+    static int NoGrumpy(int n, int[] a, int[] g, int k){
+        int max = 0;
+        int res = 0;
+        int satisfied=0;
+        for(int i=0;i<n;i++){
+            if(g[i]==0){
+                satisfied+=a[i];
+            }
+        }
+        for(int i=0;i<k;i++){
+            max+=a[i]*g[i];
+        }
+        if(max>res){
+            res = max;
+        }
+        for(int i=k;i<n;i++){
+            max-=a[i-k]*g[i-k];
+            max+=a[i]*g[i];
+            if(max>res){
+                res = max;
+            }
+        }
+        return satisfied+res;
+    }
+}

@@ -22,6 +22,4 @@ Example 2:
 Input: 1
 100
 Output: 0 */
-public class maxsum {
-    
-}
+
