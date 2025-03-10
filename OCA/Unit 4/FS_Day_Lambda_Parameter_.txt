@@ -9,3 +9,29 @@ cir.radius = 5.5
 cir = new circle()
 cir.radius = 7.7
 }
+
+Functional Interface:
+- Interface with a single abstract method
+Example / Syntax:
+@FunctionalInterface
+interface MathOperation{
+abstract int operation(int a,int b);
+}
+- Annotations are compile time enhancements -> "@"
+- Helps with functional programming, by removing class creation 
+
+Lambda Operation:
+
+- Define inline implementation of a functional interface i.e., an interface with single method
+- Eliminates need of anonymous classes
+Types:
+
+- with type declaration:
+FunctionalInterface var = (Datatype var, Datatype var ....) -> operation;
+- without type declaration:
+FunctionalInterface var = (var, var ...) -> operation;
+- with return statement with curly braces
+FunctionalInterface var = (int a, int b) -> {return op;};
+- with return statement and no curly braces
+FunctionalInterface var = (int a, int b) -> return op;
+
