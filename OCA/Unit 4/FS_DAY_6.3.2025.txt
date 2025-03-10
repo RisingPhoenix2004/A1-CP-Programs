@@ -1,0 +1,30 @@
+Constructor Chaining:
+- 
+For a final class, all its methods are final implicitly 
+Final 4 types:
+Methods
+Classes
+Variables
+Function Parameters
+
+For Class to be immutable:
+- Final class
+- No setters
+- private variables
+
+static:
+- One copy with all objects
+- Static gets initialized without any object, can be accessed without any object creation
+
+- Every time a static variable is called from object, then object gets replaced with the Class. [ t1.val gets replaced to Test.val ]
+
+Private Constructors:
+Y main method is static ?
+- JVM needs to access the main method, so the main method is accesssed using the class name
+- Java Virtual Machine (JVM) without creating an instance of the class 
+
+
+Create a singleton design pattern there are three steps to follow:
+1. Declare a data member/ object that is static 
+2. Define constructor as private
+3. Define a static member function which end users can call which internally calls the constructor to create the object

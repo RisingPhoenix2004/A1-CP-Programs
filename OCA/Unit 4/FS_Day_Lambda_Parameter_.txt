@@ -1,0 +1,11 @@
+What is the Default parameter passing in Java ?
+
+Ans: Pass By value for Primitive Types. For an object, it is pass by reference
+
+md(cir)
+System.out.println(cir.radius)
+public void md(circle cir){
+cir.radius = 5.5
+cir = new circle()
+cir.radius = 7.7
+}
