@@ -1,0 +1,16 @@
+Java packages & Jar Files
+
+component object model -> com
+
+PIC -> Code Writing Schema Acronym
+Package -> Import -> Class
+
+To remove Package ambiguity, can use fully qualified package name, Like Pack1.test1 and Pack1.subpack1.test1 as example names when creating reference objects of the classes
+
+
+If we do explicit import then that class (like java.test1), has precedence over an import of kind  wildcard "java.*"
+
+Imports of same kind can override each other, the latest one is considered, which might lead to ambiguous import conditions;
+
+All data types in Python are immutable like Wrapper classes in Java
+Primitive Types in Java are Mutable ?

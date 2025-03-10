@@ -1,0 +1,20 @@
+OCA Chapter 2:
+
+Arithmetic Operations on byte or short are autoboxed to integers, assigning back to short leads to error as Integer result is being assigned to short
+
+Float is by default considered as  double so to declare float we have to keep 'f'
+
+Does ++i and i++ matter in Loops ?
+
+It matters only when i is used in the for loop computation
+
+instanceOf returns true is given object is instance of the given type
+
+variable instanceof Object_name/Object
+
+C,C++ anything zero is false else is true Whereas in Java it should be only if(Boolean) and ntg else is allowed
+
+|| / short circuit operator doesn't check the second part of the condition if First expression is True
+
+
+

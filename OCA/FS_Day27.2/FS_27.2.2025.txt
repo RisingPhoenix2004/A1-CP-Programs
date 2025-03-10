@@ -1,0 +1,61 @@
+Q1. Can u have an array list with fixed size i.e. no new elements can be added or elements be deleted ?
+
+Ans. 	Collections.unmodifiableList(existing_list)
+	list.of() -> creates a arraylist that is immutable
+
+Q2.
+int [] numbers = {2,4,6,8}
+Arrays.binarySearch(list, number) -> for non existent elements -index + -1
+Arrays.binarySearch(numbers,2)
+Arrays.binarySearch(numbers,4)
+Arrays.binarySearch(numbers,1) -> 0 + -1 = -1
+Arrays.binarySearch(numbers,3) -> -1 + -1 = -2
+Arrays.binarySearch(numbers,9) -> -3 + -1 = -4
+
+if unsorted -> unpredictable
+
+ArrayList & Polymorphism:
+
+Q3. 
+
+Set obj = new HashSet();
+obj.add(23);
+obj.add(5);
+obj.add(45);
+obj.add(2);
+System.out.println(obj);
+
+HashSet -> random order
+LinkedHashSet -> insertion order
+TreeSet -> Sorted Order
+
+Set obj = new HashSet();
+obj.add(23);
+obj.add("Sid");
+obj.add(45);
+obj.add(2);
+System.out.println(obj);
+
+<> -> Ensures Type Safety
+
+
+If <> not there:
+- Sorting not possible
+"""" Better to get a compile time error than runtime exception """"
+
+Why are generics better than non-generics ?
+
+
+list1.remove(element) -> return true or false
+list1.remove(index) -> returns value at index
+list.set(index,element) -> updates value at given index
+ArrayList.equals -> checks length and order of elements
+
+
+Back Collection:
+- If a arraylist is created with Arrays.asList(), then List is immutable w.r.t its size but its contents can be changed
+- ArrayList is fixed size as it is backed / formed from a array
+
+- Using List.of(), the ArrayList formed is immutable in size changes as well as value modification
+	
+	

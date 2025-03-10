@@ -1,0 +1,84 @@
+Autoboxing and AutoUnboxing
+
+In older versions , explicitly mentioning the types was necessary , now its deprecated amd you get a warning 
+
+Adding any object to the collection ( list.add(2)) will autobox int to Integer and add it and whenever you extract the data it gets unboxed 
+
+
+Integer i = 10;
+Integer j = i;
+
+i++; -> unboxed (10) , value is updated (11) , then autoboxing Integer(11)
+j--; -> 9
+
+the final values of i and j are 11 and 9 respectively ; ( as all wrapper classes are immutable ) 
+
+
+if u have a list of [1.2,3.0,null] , double d = list.get(2) will give you a null pointer exception , but just printing it wont as null is a valid reference. 
+
+
+
+
+Why a wrapper ? 
+
+To work with collections , it takes an object , not the primitive datatypes , so there was the need of object datatypes for int , float , double etc ; 
+This is why wrapper classes were created and autoboxing and autounboxing is done.
+
+
+new Byte((byte) 1) -> any numeric value is int , so we need to cast it to byte and assign it to the wrapper class Byte
+
+
+Double d = 3.0;
+Integer i = 3;
+
+d.equals(i) ->false because i is not an instance of d ( i is not double) 
+
+instead if both Double class objects are compared it checks the value if .equals is used
+instead of .equals if "==" is used it returns false 
+
+
+.intValue for Integer , .floatValue for Float , .booleanvalue for Boolean are functions that give
+ you the primitive equivalent of the Wrapper classes 
+
+
+Primitive datatypes cant have functions called. ( cant be dereferenced error )
+
+
+
+
+Date , Time and DateTime Classes are Immutable 
+
+All these classes dont have a constructor , they have a static method which is used to initialize a object of these classes 
+
+LocalData , LocalTIme , LocalDateTime have .now() method which give you the current date/time
+they also have a .of() method which is used to set the date/time 
+
+Month is a Enum type in java , which has all the months , Month.JANUARY -> enumerated value , constant  (1)
+
+LocalDate.of(2017,Month.January,30) -> creates a new object 
+if we exceed the date to say 34 , it throws an error 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

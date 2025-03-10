@@ -1,0 +1,48 @@
+Final Keyword, Getters and Setters
+
+- All immutable classes are declared with final
+- final class -> cannot inherit / create a sub class to main class
+- To make smthg immutable:
+	Data members be private
+	No setters, only getters
+	Make class final to prevent sub class creation and modification or 	overriding of methods of main class
+OCA Chapter 3:
+- JVM maintains a String Pool / Intern Pool.
+- any "" string is added to it, if it is missing.
+- This makes many strings references refer to same string in memory due to string pool
+- new String() -> creates an object with string literal of "x", thus it is not in string pool, gets stored in the heap
+- 
+Q1. What is the advantage of a String Pool in Java ?
+- Memory Efficiency
+
+Q2. 
+String s1 = "1"
+String s2 = s1
+s1 += "2"
+s1 += 3
+SOP(s1) -> 123
+SOP(s2) -> 1
+String s3 = "5"
+String s4 = s3.concat("6")
+s4.concat("7")
+SOP(s3) -> 5
+SOP(s4) -> 56
+
+
+Q3.
+
+String s1 = "Hello"
+
+Q4. == Vs .equals() ?
+
+- == -> checks object references
+- equals() -> checks string literal values only for String whereas for String BUilder and String Buffer is calls similar to "==" as it doesn't override the equals method 
+
+intern():
+- Creates an exact copy of string located on heap (String object) and stores in string pool 
+
+
+String Builder & String Buffer: Mutable
+- 
+Difference Between String Builder & String Buffer ?
+- String Buffer is thread safe, thus slow then String Builder

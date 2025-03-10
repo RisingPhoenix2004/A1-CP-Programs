@@ -1,0 +1,52 @@
+Equals Method:
+
+
+Q1. When is comparable method called ?
+Ans. When sorting, TreeMap or a collection that is sorted
+
+How to Override Equals ?
+- Why is typecasting used in equals method to method class ?, for "this"
+- obj.value == this.value : 
+obj doesn't have a data member value here.
+Typecast is successful as it is a sub class of Object 
+
+Subscripts:
+
+1. int [] a,b -> two integer arrays
+2. int a[], b[] -> two integer arrays
+3. int a[],b -> one integer array and integer
+
+4. int a[3] = {1,4,5}. SOP(a) -> error: the token 3 is error
+cannot declare array size while initialization
+
+Print 2d Array -> deepToString(array)
+
+
+Arrays.sort() of sorts as per ASCII values so 111 comes before any other value 
+circle [] obj = new circle[3];
+gives null pointer exception as it creates just 3 references and not actual 3 objects
+
+
+
+Programs:
+
+Q1. Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order
+
+Example:
+Input: 5
+-4 -1 0 3 10
+Output: [0,1,9,16,100]
+
+
+Q2. Given an array of integers arr, you are initially positioned at the first index of the array.
+
+In one step, you can jump from index i to index:
+-> i+1 where: i+1 < arr.length
+-> i-1 where: i - 1 >=0
+-> j where: arr[i] == arr[j] and i!=j
+
+Return the minimum number of steps to reach end of the array
+
+Example:
+Input: [100,-23,-23,404,100,23,23,23,3,404]
+Output: 3

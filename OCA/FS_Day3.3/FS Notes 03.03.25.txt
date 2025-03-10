@@ -1,0 +1,5 @@
+Period Class:
+- 
+Where DateTimeFormatter.ofPattern(dd:MM:yyyy hh:mm:ss)
+f.format() -> passing only DateTime object will work whereas Date and Time would give errors
+

@@ -1,0 +1,45 @@
+System Design / OCA Concepts
+
+What is a Constructor ?
+
+- Initializes a given class instance or object
+- Constructor is Spl Function
+- Same name as Class name so it is Spl
+- Constructor needn't be explicitly defined or declared
+Why we need constructor in java ?
+- To create an object, we need constructor, else we loose meaning of OOP part of programming language
+
+Why we need Getters and Setters ?
+- Data Encapsulation & Data Protection. Allows Different Access levels for variables
+
+Ask not what the System does. Ask what it does it to
+
+Can Constructor be Private ?
+- Yes, Default Constructor is always public in nature
+- A function with return type is not a Constructor
+
+Why cannot the constructor have a return type ?
+- Return type of Constructor is the object of that class
+- Error: If constructor has a return type: Constructor cannot be applied as void circle() and circle() are diff
+
+Block:
+- Conditional Block, Looping Block, Method Block
+- Instance initialization and static initialization 0> for initializing the object
+- Execute before object is created
+- Before Constructor
+- Instance Comes whenever an object is created
+- static is when the class is loaded
+- First static intialization, then Instance Initialization 
+- Instance Block: { }
+
+Print an Object like (System.out.println(new Random(10)))class name + hexadecimal rep of hash code
+
+
+
+
+
+All Instance variables have a default value. Bool is False and other primitive data types are 0 or forms. Non-Primitive Data Types are null by default
+
+
+Follow OOP philosophy. 
+Code:
