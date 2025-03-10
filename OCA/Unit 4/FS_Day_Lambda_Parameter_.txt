@@ -32,6 +32,17 @@ FunctionalInterface var = (Datatype var, Datatype var ....) -> operation;
 FunctionalInterface var = (var, var ...) -> operation;
 - with return statement with curly braces
 FunctionalInterface var = (int a, int b) -> {return op;};
-- with return statement and no curly braces
-FunctionalInterface var = (int a, int b) -> return op;
+- without return statement and no curly braces
+FunctionalInterface var = (int a, int b) -> op;
+
+Do Lambdas create objects ?
+- Yes as internally objects are created
+- No, as we are not creating the objects
+
+
+Methods in Interface can be implemented with them either being default and static from Java 8;
+
+Predicate:
+- Predicate<Datatype> var = lambda function
+- 
 
