@@ -1,0 +1,12 @@
+/* Retrieve employees who were hired between the years 1995 and 1999.
+
+Expected Output Columns:
++--------+----------+
+| ename  | hiredate |
++--------+----------+
+
+*/
+USE test;
+select ename, hiredate
+from emp
+where hiredate between "1995-01-01" and "1999-12-31";
