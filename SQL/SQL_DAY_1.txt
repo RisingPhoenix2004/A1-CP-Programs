@@ -1,0 +1,32 @@
+Why is Normalization used in DBMS ?
+- Data Redundancy 
+- Check Insertion, Deletion and Updation anomaly
+Three schema of DBMS: Database Abstraction
+- User / External Views Schema
+- Conceptual / Logical Views Schema
+- Internal / Physical Views Schema
+
+Data Independence:
+- Physical Independence: Change in Physical schema, minimal change in Logical schema
+- Logical Independence: Change in Logical schema, minimal change in External Schema
+
+Database Administrator:
+- Data Security
+- Define Schema and management
+- Roles and access
+- Backup and Recovery policy 
+
+ACID:
+- Atomicity
+- Consistency
+- Isolation
+- Durable
+
+Languages in SQL:
+- DDL
+- DML
+- DRL / DQL
+- TCL
+- DCL
+
+
