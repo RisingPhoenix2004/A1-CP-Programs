@@ -1,0 +1,13 @@
+/* List employees who do not receive a commission but earn more than 2500.
+
+Expected Output Columns:
+------------------------
++-------+---------+------+
+| ename | sal     | comm |
++-------+---------+------+
+
+*/
+USE test;
+select ename, sal, comm
+from emp
+where sal>2500 and comm is  null;

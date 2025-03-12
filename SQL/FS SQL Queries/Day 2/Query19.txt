@@ -1,0 +1,12 @@
+/* Write a SQL query to calculate the total salary and total commission for all employees.
+
+Expected Output Columns:
+------------------------
++--------------+------------------+
+| Total Salary | Total Commission |
++--------------+------------------+
+
+*/
+USE test;
+select SUM(sal) as "Total Salary", SUM(comm) as "Total Commission"
+from emp;

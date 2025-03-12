@@ -1,0 +1,15 @@
+/* Find the department that has the most employees.
+
+Expected Output Columns:
+------------------------
++--------+----------------+
+| deptno | employee_count |
++--------+----------------+
+
+*/
+USE test;
+select deptno , COUNT(ename) as employee_count
+from emp
+group by deptno
+order by COUNT(ename) DESC
+limit 1;

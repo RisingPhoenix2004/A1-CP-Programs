@@ -1,0 +1,13 @@
+/* Find employees who belong to departments located in 'Dallas'.
+
+Expected Output Columns:
+------------------------
++-------+--------+
+| ename | deptno |
++-------+--------+
+
+*/
+USE test;
+select ename, deptno
+from emp
+where deptno in (select deptno from dept where location="Dallas");

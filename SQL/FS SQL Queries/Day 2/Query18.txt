@@ -1,0 +1,12 @@
+/* Write a SQL query to find the difference between the highest and second highest salary.
+
+Expected Output Columns:
+------------------------
++-------------------+
+| salary_difference |
++-------------------+
+
+*/
+USE test;
+select (Max(sal) - (select max(sal) from emp where sal < (select Max(sal) from emp))) as salary_difference
+from emp;

@@ -1,0 +1,13 @@
+/* Find departments that have at least one employee earning more than 3000.
+
+Expected Output Columns:
+------------------------
++--------+------------+
+| deptno | dname      |
++--------+------------+
+
+*/
+USE test;
+select deptno, dname
+from dept
+where deptno in (select deptno from emp where sal >3000);

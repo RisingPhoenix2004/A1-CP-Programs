@@ -43,8 +43,8 @@ select * from salgrade
   where grade between 2 and 4;
 
 select * from salgrade 
-  where grade >= 1;   // Test with >= & <=
-
+  where grade >= 1;   
+// Test with >= & <=
 select * from emp 
   where deptno between 10 and 30;
 

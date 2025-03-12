@@ -1,0 +1,15 @@
+Nested Queries / Subqueries
+- Query which is nested inside another Query
+
+Alter:
+- Rename, Delete, Add column
+- Add or Drop constraints
+- Syntax:
+
+Scalar Functions:
+- INSTR -> index 1-based if found, else 0
+- TRIM
+
+SQL Injection:
+- Fight it, use parameterized Queries
+- 1=1 -> returns everyone irrespective of any other condition

@@ -1,0 +1,13 @@
+/* Write a SQL query to count the number of employees hired in each year.
+
+Expected Output Columns:
+------------------------
++-----------+----------------+
+| hire_year | hires_per_year |
++-----------+----------------+
+
+*/
+USE test;
+select year(hiredate) as hire_year, Count(*) as hires_per_year
+from emp
+group by year(hiredate);
