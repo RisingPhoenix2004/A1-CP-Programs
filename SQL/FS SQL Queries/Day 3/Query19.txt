@@ -1,0 +1,14 @@
+/* Write a SQL query to display the average salary and job count per department, 
+sorted by department number and average salary descending.
+
+
++--------+-------------+------------+
+| deptno | AVG(sal)    | COUNT(job) |
++--------+-------------+------------+
+*/
+USE test; 
+
+select deptno, AVG(sal), COUNT(job)
+from emp
+group by deptno
+order by deptno, avg(sal) desc;

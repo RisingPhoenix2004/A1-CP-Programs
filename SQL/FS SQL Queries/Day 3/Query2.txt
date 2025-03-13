@@ -1,0 +1,13 @@
+/*  Write a SQL query to list the total salary and employee count per job, 
+excluding clerks.
+
++-----------+----------+----------+
+| job       | SUM(sal) | COUNT(*) |
++-----------+----------+----------+
+
+*/
+USE test; 
+select job, SUM(sal) as "SUM(sal)", COUNT(*) as "COUNT(*)"
+from emp
+group by job
+having job not in ("clerk");

@@ -1,0 +1,14 @@
+/* Write a SQL query to list departments with an average salary above 2000, 
+ordered by average salary.
+
++--------+-------------+
+| deptno | AVG(sal)    |
++--------+-------------+
+
+*/
+USE test; 
+select deptno, AVG(sal)
+from emp
+group by deptno
+having avg(sal) > 2000 
+order by avg(sal);

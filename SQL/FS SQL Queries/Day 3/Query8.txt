@@ -1,0 +1,12 @@
+/* Write a SQL query to retrieve employees ordered by hire date and salary 
+in descending order.
+
++-------+--------+-----------+------+------------+---------+---------+--------+
+| empno | ename  | job       | mgr  | hiredate   | sal     | comm    | deptno |
++-------+--------+-----------+------+------------+---------+---------+--------+
+
+*/
+USE test;
+select *
+from emp
+order by  hiredate , sal desc;

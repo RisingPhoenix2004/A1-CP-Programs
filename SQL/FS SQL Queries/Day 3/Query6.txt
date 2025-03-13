@@ -1,0 +1,14 @@
+/*  Write a SQL query to list departments with more than 3 employees, ordered 
+by total salary descending.
+
++--------+----------+----------+
+| deptno | SUM(sal) | COUNT(*) |
++--------+----------+----------+
+
+*/
+USE test; 
+select deptno, sum(sal) as "SUM(sal)", COUNT(*)
+from emp
+group by deptno
+having COUNT(*) > 3
+order by sum(sal) desc;

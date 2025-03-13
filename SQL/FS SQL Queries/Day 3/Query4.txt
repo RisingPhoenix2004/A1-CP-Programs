@@ -1,0 +1,13 @@
+/*  Write a SQL query to display the number of employees per job, sorted by job 
+title alphabetically.
+
++-----------+----------+
+| job       | COUNT(*) |
++-----------+----------+
+
+*/
+USE test; 
+select job, COUNT(*) as "COUNT(*)"
+from emp
+group by job
+order by job ;

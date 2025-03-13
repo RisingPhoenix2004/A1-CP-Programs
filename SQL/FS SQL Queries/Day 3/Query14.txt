@@ -1,0 +1,13 @@
+/* Write a SQL query to list the total salary and employee count per department, 
+excluding employees named 'FORD'.
+
+
++--------+----------+----------+
+| deptno | SUM(sal) | COUNT(*) |
++--------+----------+----------+
+*/
+USE test; 
+select deptno, SUM(sal), COUNT(*)
+from emp
+where  ename!="FORD"
+group by deptno;

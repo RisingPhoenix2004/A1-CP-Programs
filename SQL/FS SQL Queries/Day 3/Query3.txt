@@ -1,0 +1,14 @@
+/*  Write a SQL query to show the total salary per department where the 
+total salary exceeds 5000, ordered by department number.
+
++--------+----------+
+| deptno | SUM(sal) |
++--------+----------+
+
+*/
+USE test; 
+select deptno, sum(sal) as "SUM(sal)" 
+from emp
+group by deptno
+having sum(sal) > 5000
+order by deptno;

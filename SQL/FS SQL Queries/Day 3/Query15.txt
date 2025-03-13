@@ -1,0 +1,13 @@
+/* Write a SQL query to retrieve the total salary per job where the total salary 
+is less than 10000, ordered by total salary descending.
+
++-----------+----------+
+| job       | SUM(sal) |
++-----------+----------+
+*/
+USE test; 
+select job, SUM(sal)
+from emp
+group by job
+having sum(sal) <=10000
+order by sum(sal) desc;

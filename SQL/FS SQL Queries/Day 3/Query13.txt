@@ -1,0 +1,14 @@
+/* Write a SQL query to find the average salary per job in departments other
+than 10, ordered by job.
+
+
++-----------+-------------+
+| job       | AVG(sal)    |
++-----------+-------------+
+*/
+USE test; 
+select job, AVG(sal)
+from emp
+where deptno!=10
+group by job
+order by job;

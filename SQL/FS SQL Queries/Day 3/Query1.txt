@@ -1,0 +1,15 @@
+/*  Write a SQL query to find the average salary and number of employees per department, 
+ordered by average salary in descending order.
+
+Expected Output Columns:
+------------------------
++--------+-------------+----------+
+| deptno | AVG(sal)    | COUNT(*) |
++--------+-------------+----------+
+
+*/
+USE test; 
+select deptno, avg(sal) as "AVG(sal)", COUNT(*) as "COUNT(*)"
+from emp
+group by deptno
+order by avg(sal) desc;
