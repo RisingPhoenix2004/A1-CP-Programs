@@ -1,0 +1,5 @@
+Query to generate a report of student
+
+Query to find address to young students
+
+Query to find hostels of oldest students

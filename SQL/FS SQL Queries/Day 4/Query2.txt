@@ -1,0 +1,9 @@
+/* Write a SQL query to retrieve all employees and their department locations, 
+including those without departments, using LEFT JOIN.
+
++--------+----------+
+| ename  | location |
++--------+----------+
+*/
+USE test; 
+

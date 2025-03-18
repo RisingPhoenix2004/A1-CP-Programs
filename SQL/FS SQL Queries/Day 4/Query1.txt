@@ -1,0 +1,9 @@
+/* Write a SQL query to list employee names and department names for employees with a salary greater than 2000 using INNER JOIN.
+
+
++-------+------------+
+| ename | dname      |
++-------+------------+
+*/
+USE test; 
+

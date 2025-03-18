@@ -1,0 +1,10 @@
+/* Write a SQL query to list employee names and department names using an
+implicit join, ordered by employee name.
+
++--------+------------+
+| ename  | dname      |
++--------+------------+
+
+*/
+USE test; 
+

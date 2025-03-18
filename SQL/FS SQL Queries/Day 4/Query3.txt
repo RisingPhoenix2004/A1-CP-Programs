@@ -1,0 +1,9 @@
+/* Write a SQL query to list all department numbers, department names and their 
+employee counts, including departments with no employees, using RIGHT JOIN.
+
++--------+------------+-----------+
+| deptno | dname      | emp_count |
++--------+------------+-----------+
+*/
+USE test; 
+
