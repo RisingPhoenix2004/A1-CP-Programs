@@ -28,7 +28,7 @@ CREATE TABLE T4(
 	hostel VARCHAR(5)
 );
 
-ALTER TABLE T3 add CONSTRAINT fk_yr FOREIGN KEY(year) REFERENCES T4(year) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE T3 add CONSTRAINT FOREIGN KEY(year) REFERENCES T4(year) ON UPDATE CASCADE ON DELETE CASCADE;
 
 INSERT INTO T1 values(1,"akhi",20);
 INSERT INTO T1 values(2,"surabhi",18);
@@ -56,4 +56,5 @@ INSERT INTO T3 values(4,'II');
 INSERT INTO T3 values(5,'II');
 INSERT INTO T3 values(6,'XII');
 
-
+Querry to find address of youngest students
+Query to find hostels of oldest students

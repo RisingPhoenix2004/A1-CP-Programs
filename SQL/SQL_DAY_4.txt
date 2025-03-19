@@ -1,0 +1,64 @@
+Why Constraints in DBMS ?
+- Constraints in DBMS are used to restrict the type of data that can be stored in a database.
+- Constraints are used to enforce the rules and relationships between data in a database.
+- Constraints are used to maintain the integrity of the data in a database.
+Types of Constraints in DBMS ?
+- NOT NULL constraint: This constraint ensures that a column cannot have a null value.
+- UNIQUE constraint: This constraint ensures that all values in a column are unique.
+- PRIMARY KEY constraint: This constraint is used to uniquely identify each record in a table.
+- FOREIGN KEY constraint: This constraint is used to link two tables together.
+What is the purpose of Constraints in DBMS ?
+- The purpose of constraints in DBMS is to enforce the rules and relationships between data in a database.
+- Constraints are used to maintain the integrity of the data in a database.
+How to define a primary key which comprises of multiple columns:
+- To define a primary key which comprises of multiple columns, we need to specify the column names separated by commas in the PRIMARY KEY constraint.
+- For example, PRIMARY KEY (column1, column2, column3).
+Constraints can be at column level or table level
+-> table level -> after declaring all columns
+-> column level -> after declaring the column
+Constraints can be classified into two types
+-> 1. Entity integrity constraints
+-> 2. Referential integrity constraints
+Various Constraints:
+-> NOT NULL constraint
+-> UNIQUE constraint
+-> PRIMARY KEY constraint
+-> FOREIGN KEY constraint -> Referential integrity Constraint
+-> Check Constraint
+-> Default Constraint
+
+Joins:
+- Join is a SQL statement that combines rows from two or more tables based on a related column betwe
+
+Queries on student.sql: 
+
+Query to return a report on the students:
+
+select *
+    -> from T1 Join T2 on T1.roll=T2.roll
+    -> Join T3 on T3.roll=T1.roll
+    -> Join T4 on T3.year=T4.year;
+
+Query to find address of youngest students
+
+ select t2.address
+    -> from t2
+    -> join t1 on t2.roll=t1.roll
+    -> where age = (select min(t1.age) from t1);
+
+Query to find hostels of oldest students
+
+ select t4.hostel
+    -> from t4
+    -> join t3 on t3.year = t4.year
+    -> join t1 on t1.roll=t3.roll
+    -> where t1.age = (select max(t1.age) from t1);
+
+Query to delete duplicate records from a table where job is the same -> self join
+
+delete t1 from emp t1
+    -> inner join emp t2
+    -> where t1.empno<t2.empno and t1.job=t2.job;
+
+
+/*

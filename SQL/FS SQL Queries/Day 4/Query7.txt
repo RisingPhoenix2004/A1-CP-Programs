@@ -6,4 +6,6 @@ using EXISTS.
 +--------+------------+
 */
 USE test; 
-
+select d.deptno, d.dname
+from dept d
+where exists (select 1 from emp e where d.deptno=e.deptno and e.sal > 2500);

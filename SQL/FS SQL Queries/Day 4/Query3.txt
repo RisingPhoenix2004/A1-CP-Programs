@@ -6,4 +6,7 @@ employee counts, including departments with no employees, using RIGHT JOIN.
 +--------+------------+-----------+
 */
 USE test; 
-
+select dept.deptno, dept.dname, COUNT(emp.ename) as emp_count
+from emp
+RIGHT JOIN  dept ON emp.deptno=dept.deptno
+Group by dept.dname, dept.deptno;

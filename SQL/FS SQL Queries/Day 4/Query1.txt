@@ -6,4 +6,7 @@
 +-------+------------+
 */
 USE test; 
-
+select emp.ename, dept.dname
+from emp
+join dept on emp.deptno=dept.deptno
+where emp.sal>2000;

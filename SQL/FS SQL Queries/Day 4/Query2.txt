@@ -6,4 +6,6 @@ including those without departments, using LEFT JOIN.
 +--------+----------+
 */
 USE test; 
-
+select emp.ename, dept.location
+from emp
+Left join dept on dept.deptno=emp.deptno;

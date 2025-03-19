@@ -6,4 +6,6 @@ a self-join.
 +---------+
 */
 USE test; 
-
+select DISTINCT(e1.ename) as manager
+from emp e
+join emp e1 on e1.empno=e.mgr;

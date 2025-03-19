@@ -7,4 +7,7 @@ Retrieve Department-wise Total Salary and Number of Employees (Using GROUP BY an
 
 */
 USE test; 
-
+select d.dname, COunt(e.empno) as num_employees, sum(e.sal) as total_salary
+from emp e
+right join dept d on d.deptno=e.deptno
+group by d.dname;

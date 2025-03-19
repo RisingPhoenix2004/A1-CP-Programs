@@ -7,3 +7,6 @@ than 1000 using NOT EXISTS.
 */
 USE test; 
 
+select d.dname, d.deptno
+from dept d
+where not exists (select 1 from emp e where e.sal < 1000 and d.deptno=e.deptno);

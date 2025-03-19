@@ -6,4 +6,6 @@ using CROSS JOIN.
 +--------+------------+
 */
 USE test; 
-
+select e.ename, d.dname
+from dept d
+cross join emp e ;
