@@ -6,4 +6,7 @@ hire date is after 1980 using INNER JOIN.
 +--------+------------+------------+
 */
 USE test; 
-
+select e.ename,d.dname,e.hiredate from emp e 
+join dept d 
+on e.deptno=d.deptno
+where e.hiredate>'81/01/01';

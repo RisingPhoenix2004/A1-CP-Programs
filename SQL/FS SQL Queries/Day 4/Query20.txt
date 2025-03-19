@@ -7,4 +7,7 @@ implicit join, ordered by employee name.
 
 */
 USE test; 
-
+select e.ename,d.dname from emp e
+join dept d 
+on e.deptno=d.deptno
+order by e.ename;

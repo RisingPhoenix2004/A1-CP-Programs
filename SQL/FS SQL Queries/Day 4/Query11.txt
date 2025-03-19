@@ -6,7 +6,6 @@ department is in 'Chicago' using INNER JOIN.
 +-------+-------+
 */
 USE test; 
-select e.ename, d.dname
-from emp e 
-join dept d on d.deptno=e.deptno
-where d.location in ("Chicago");
+select e.ename,d.dname from emp e
+inner join dept d on e.deptno=d.deptno
+where d.location="Chicago";

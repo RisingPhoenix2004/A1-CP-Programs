@@ -7,4 +7,8 @@ INNER JOIN and HAVING.
 
 */
 USE test; 
-
+select e.deptno,d.dname,count(e.ename) as "emp_count" from emp e
+join dept d
+on e.deptno=d.deptno
+group by d.deptno
+having count(e.ename)>3 ;

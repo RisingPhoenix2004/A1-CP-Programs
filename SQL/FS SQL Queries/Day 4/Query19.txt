@@ -8,4 +8,7 @@ Find Departments Without Employees (Using LEFT JOIN and NULL Check)
 
 */
 USE test; 
-
+select d.dname as "Department",d.location as "Location" from dept d
+left join emp e 
+on d.deptno=e.deptno
+where e.empno is null;

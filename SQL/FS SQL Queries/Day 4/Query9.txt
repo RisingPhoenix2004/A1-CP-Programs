@@ -8,3 +8,4 @@ constraints.
 */
 USE test; 
 
+select e1.ename as manager_name, count(e2.empno) as emp_count from emp e1 join emp e2 on e1.empno=e2.mgr join dept d1 on e1.deptno=d1.deptno where d1.location='New York' group by e1.empno;

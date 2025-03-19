@@ -7,4 +7,6 @@ JOIN for employees without managers.
 
 */
 USE test; 
-
+select e1.ename as "employee",e2.ename as "manager" from emp e1
+left join emp e2 
+on e1.mgr=e2.empno;
