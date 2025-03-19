@@ -1,0 +1,14 @@
+1. Write a SQL procedure to retrieve all employees with their department names.
+
++-------+--------+-----------+------------+
+| empno | ename  | job       | dname      |
++-------+--------+-----------+------------+
+
+Delimiter $$
+Create procedure proc1 ()
+begin
+select e.empno, e.ename, e.job, d.dname
+from emp e
+join dept d on e.deptno=d.deptno;
+end
+Delimiter;

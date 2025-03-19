@@ -1,0 +1,24 @@
+ 7. Write a SQL procedure to calculate the total salary expenditure by department and return the highest total.
+**Procedure:** (No IN parameters, only OUT)
+CALL TotalSalaryByDept(@max); SELECT @max;
++------------+--------------+
+| dname      | total_salary |
++------------+--------------+
+
++----------+
+| @max     |
++----------+
+
+delimiter $$
+create procedure proc7(OUT max1 int)
+begin
+select d.dname, sum(e.sal)
+from dept d
+join emp e on e.deptno=d.deptno
+group by d.dname;
+select max(sum(sal)) into max1 from dept d
+join emp e on e.deptno=d.deptno
+group by d.dname;
+
+END $$
+delimiter ;

@@ -1,0 +1,15 @@
+2. Write a SQL procedure to count employees in each department.
+
++------------+-----------+
+| dname      | emp_count |
++------------+-----------+
+
+Delimiter $$
+Create procedure proc2 () 
+begin
+select d.dname, count(*)
+from dept d
+join emp e on e.deptno=d.deptno
+group by d.dname;
+END $$
+Delimiter ; 

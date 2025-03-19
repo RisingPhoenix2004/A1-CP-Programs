@@ -1,0 +1,14 @@
+4. Write a SQL procedure to find employees with duplicate names.
++-------+------------+
+| ename | name_count |
++-------+------------+
+
+Delimiter $$
+CREATE PROCEDURE proc4()
+BEGIN
+SELECT ename, COUNT(*) as name_count
+FROM emp
+GROUP BY ename
+HAVING COUNT(*) > 1;
+END $$
+Delimiter ;

@@ -1,0 +1,16 @@
+8. Write a SQL procedure to find employees hired before '1995-01-01' and return their average salary.
+**Procedure:** (IN parameter: cutoff_date = '1995-01-01')
+**Execution Command:** CALL GetEmpByHireDate(@avg); SELECT @avg;
+
+-- Result of SELECT in procedure:
++-------+-------+------------+
+| empno | ename | hiredate   |
++-------+-------+------------+
+
+-- Result of SELECT @avg:
++---------+
+| @avg    |
++---------+
+
+Delimiter $$
+create procedure proc8(IN date1 varchar(100))

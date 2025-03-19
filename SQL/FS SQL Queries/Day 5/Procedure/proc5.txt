@@ -1,0 +1,23 @@
+ 5. Write a SQL procedure to find employees earning above 2500 and return their count.
+**Procedure:** (IN parameter: min_salary = 2500)
+CALL GetHighEarners(@count); SELECT @count;
++-------+---------+--------+
+| ename | sal     | deptno |
++-------+---------+--------+
+
++--------+
+| @count |
++--------+
+
+Delimiter $$
+create procedure proc5(IN min_salary int , OUT count1 int)
+BEGIN
+select ename, sal, deptno
+from emp
+where sal > min_salary;
+select count(*) into count1
+from emp
+where sal > min_salary;
+
+END $$
+Delimiter;

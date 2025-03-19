@@ -1,0 +1,14 @@
+ 3. Write a SQL procedure to list departments with no employees.
++---------+----------+
+| dname   | location |
++---------+----------+
+
+Delimiter $$
+create procedure proc3()
+begin
+select d.deptno, d.dname
+from emp e
+right join dept d on d.deptno=e.deptno
+where e.empno is null;
+END $$
+Delimiter ;

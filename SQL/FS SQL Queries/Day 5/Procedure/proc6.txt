@@ -1,0 +1,23 @@
+6. Write a SQL procedure to list employees and their managers' names and count employees with no manager.
+**Procedure:** (No IN parameters, only OUT)
++----------+-----------+---------+
+| employee | job       | manager |
++----------+-----------+---------+
+
++---------+
+| @no_mgr |
++---------+
+
+Delimiter $$
+Create procedure proc6 (OUT c int)
+begin
+select e1.ename as "employee", e1.job as "job", e2.ename as "manager" 
+from emp e1
+left join emp e2 
+on e1.mgr=e2.empno;
+select count(*) into c from emp e1
+left join emp e2 
+on e1.mgr=e2.empno
+where e1.job in ("MANAGER");
+END $$
+delimiter ;
