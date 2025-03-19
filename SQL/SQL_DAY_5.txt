@@ -1,0 +1,49 @@
+Transaction Control Language (TCL):
+TCL is a scripting language that is used to automate tasks and workflows. It is widely used in
+networking and system administration. TCL is known for its simplicity and flexibility, making it a popular choic
+e for automating tasks and workflows.
+What is a transaction ?
+A transaction is a sequence of operations performed on a database that are executed as a single, all-or
+nothing unit of work. Transactions are used to ensure data consistency and integrity in a database.
+
+Transaction's important property atomciity
+The atomicity property of a transaction ensures that either all or none of the operations in the transaction are
+executed. If any operation in the transaction fails, the entire transaction is rolled back and the database is
+restored to its previous state.
+
+Commands:
+1. Commit:
+The commit command is used to save the changes made by a transaction. When a commit is issued,
+the changes are written to the database and the transaction is completed.
+2. Rollback:
+The rollback command is used to undo the changes made by a transaction. When a rollback is issued,
+the changes are discarded and the database is restored to its previous state.
+3. Save point:
+A save point is a point in a transaction where the changes made by the transaction can be saved.
+The save point can be used to roll back the transaction to the save point if any operation in the transaction fails.
+
+After commit, all savepoints are deleted.
+
+Stored Procedure:
+- SQL statements
+- Stored Server side
+- Equivalent to Java API
+
+Advantages of Stored Procedures:
+- Reusability
+- Reduces network traffic
+- Reduces compile time as the database uses a pre-compiled version of the stored Procedure
+- Secure as schema is safeguarded and not displayed to anyone
+Disadvantages:
+- Too many stored procedures, memory and storage 
+- Construction of stored procedure is difficulty as it requires entire schema understanding
+- Hard to Debug
+
+
+Stored Functions:
+- SQL statements
+- Stored Server side
+- Does something specific
+- Functions take only one type of input and have a return statement for returns
+- 
+

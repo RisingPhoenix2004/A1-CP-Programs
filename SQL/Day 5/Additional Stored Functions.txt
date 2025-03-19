@@ -1,0 +1,12 @@
+delimiter $$
+CREATE function getreport3(empno1 int) returns varchar(200)
+    deterministic
+BEGIN
+    declare res varchar(200);
+    select concat(ename , ", ", sal, ", ", mgr, ", ", job) 
+        into res 
+    from emp
+    where empno = empno1;
+    return res;
+END$$
+delimiter ;
