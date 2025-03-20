@@ -1,0 +1,16 @@
+Triggers:
+- These are SQL statements that get triggered when certain sql statements are performed
+- No need to call a trigger even though it is special type of stored procedure
+- Max number of triggers on a table -> 6
+- [Before, After][Insert, Delete, Update]
+- Example:
+trigger_name convention -> triggertime_tablename_triggerevent
+create trigger trigger_name trigger_time trigger_event
+on table_name
+for each row
+BEGIN
+
+END
+
+Views:
+- 
