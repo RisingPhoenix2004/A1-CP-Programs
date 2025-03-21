@@ -152,6 +152,25 @@ SELECT * FROM emp;
 Write a SQL Trigger to log deleted employees with their job title in the emp_audit table after deletion from the emp table.
 
 
+delimiter //
+
+drop trigger if exists deletejob//
+
+create trigger deletejob
+after delete 
+on emp for each row
+begin
+	insert into emp_audit 
+	set action = concat("Deleted - Job :",old.job),
+	empno = old.empno,
+	ename = old.ename,
+	deptno = old.deptno,
+	changedat = NOW();
+end//
+
+delimiter ;
+
+
 -- Trigger 6
 DELETE FROM emp WHERE empno = 7839; 
 +----+-------+-------+--------+---------------------+----------------------------------------+
