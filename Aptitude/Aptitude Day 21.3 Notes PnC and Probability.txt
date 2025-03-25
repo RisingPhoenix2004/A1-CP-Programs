@@ -1,0 +1,148 @@
+what is the tens digit in 39! / 29! -> 0
+Words formed by letters of malayalam -> 8!/4!2! -> 
+Word assassination, words such that all s's are together -> 10!/3!2!2!
+madam. 5 letter Arrangement begin with m  but m's are not together -> 
+M _ _ _ _ -> 4!/2! - 3!/2! -> 12 - 3 => 9
+
+Music. how many arrangments of music m will be somewhere before "u"
+
+M -> 4!
+_ M _ _ _ -> 3*3*2 -> 18
+_ _ M _ _ -> 3*2*2 -> 12
+_ _ _ M u -> 3! -> 6
+Total -> 60
+
+Cat -> 3!
+/2 
+
+*Permutations with Numbers:
+1,2,3,4,5,6
+a. reptition -> 6^4 -> 1080
+a.i -> odd numbers in a -> 6*6*6*3 -> 540
+b. No reptition -> How many 4 digit numbers -> 6*5*4*3 -> 360
+b.i -> odd numbers in b -> 3_ 4_ 5_ 3_ -> 3*4*5*3 -> 180
+
+
+Reptition not allowed 0,1,2,4,6,9. How many 5 digit even numbers can be formed ?
+2_ 3_ 4_ 5_ 4_ -> 2*3*4*5*4 -> 480
+
+Odd numbers -> 2*5*4*3*2 -> 240
+Total numbers -> 6*5*4*3*2 -> 720
+
+
+
+Q6. STUDY different ways letters in the word be ordered ?
+-> 5! -> 120
+
+Q7. _ _ M_ _ _ -> 4! -> 24
+
+Q8. reptition -> {0,1,2,3,4,6,7,8,9} -> 8_ 9_ 4_ -> 288
+no reptition -> {0,1,2,3,4,6,7,8,9} ->  7_ 7_ 4_ -> 196
+
+
+ Q9. Between 700 and 999 inclusive, how many numbers are odd and do not contain zero in any place, no repition
+
+1,3,5, 7,8,9
+7 _ _ -> 4*7 -> 28
+8 _ _ -> 5*7 -> 35
+9 _ _ -> 4 * 7 -> 28
+28+35+28 -> 91
+
+
+
+
+Combinations:
+nCr -> n!/r!(n-r)! (nPr/r!)
+Number of handshakes -> nC2
+At a party there were 66 handshakes
+n(n-1) -> 132 (12*11)
+There are six groups of 3 frnds each attend a party, they have a handshake with everyone else except their frnds. How many handshakes take place ?
+a. 125
+b. 135
+c. 153
+d. 171
+
+18*17/2 - 3*2*6/2 -> 153 - 3*6 -> 135
+
+Select a group of 7 americans and 6 russians a committee of 4 must be formed.
+Form a group in ways such that :
+a. in a committee -> exactly 2 russian -> 7c2 * 6c2 => 21 * 15 -> 315
+b. Majority americans ->7c4 + 7c3 * 6c1 => 210 + 35 -> 245
+c. No particular condition -> 13c4 -> 13*12*11*10/24 -> 715
+
+
+Q9. Answer 210
+
+Probability:
+Number of favourable outcomes / total outcomes
+
+P(E-) = 1 - P(E)
+
+Q11.
+a. P(E= 4 in tens place) -> 10/90 -> 0.1
+b. P(atleast one 4 in tens place or units place) -> 18/90 -> 0.2
+c. P(no 4) -> 72/90 -> 4/5 -> 0.8
+
+Q12.
+a. P(a bulb being not defective) = 8/10 -> 0.8
+b. P(two bulbs being defective without replacement) -> 2/10 * 1/9 -> 2/90
+
+Q13.
+a. not a junior -> 1 - 19/40 -> 21/40
+b. a female or sophormore -> 28/40
+c. male sophormore or female senior -> 9/40
+
+
+Tough Probability Questions:
+
+Q1. A lottery has 100 tickets numbered 1 to 100. 3 tickets are drawn at random with replacement. What is the probability that the product of three numbers is an odd number.
+options.
+a. 1/8
+b. 1/2
+c. 5/8
+d. 7/8
+
+50*50*50/100*100*100 -> 1/8
+
+Q2. A number n is chosen from 1 to 96 inclusive. What is the probability that n*(n+1)*(n+2) is divisible by 8.
+Options.
+a. 1/2
+b. 3/8
+c. 5/8
+d. 7/8
+
+c. 5/8
+
+
+Q1. p is the average of 5 consecutive even integers. Which of the statements is true about p.
+stmt 1: p is even
+stmt 2: p is non zero
+stmt 3: p is divisible by 5 
+
+All are true.
+Must be true: p is even
+
+Q2. Between 100 and 200, how many numbers have one digit as the avg of other two digits
+
+options.
+
+a.8
+b.9
+c.10
+d.11
+
+answer b. 11
+
+Mean :
+
+Q1. At a hotel, there are two types of boxes, a small box which can hold 12 glasses, a large box that can hold 16 glasses. There are 16 more large boxs than small boxs. And avg number of glasses per box is 15. What is the total number of glasses ?
+360, 384, 420, 480
+Ans. 480
+
+15 = 12s + 16l/ s+l
+l = s+16
+15 = 28s + 256 / 2s+ 16
+2s = 16 => s = 8
+l = 24
+total glasses: 12s + 16l
+12* 8 + 24*16 => 96 + 384 -> 480

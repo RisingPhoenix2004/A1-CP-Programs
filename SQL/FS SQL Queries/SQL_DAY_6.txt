@@ -13,4 +13,16 @@ BEGIN
 END
 
 Views:
+- Allows you to query data in it
+- Virtual table
+- Updatable and Queryable
+
+Model View Arcitecture -> MVC:
+- Model: Data
+- View: Presentation
+- Controller: Logic
+
+
+Updatable Views:
+- Call insert or update on a view, it will update the base table
 - 
