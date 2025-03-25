@@ -1,0 +1,152 @@
+
+- The  query with permissions for user `'subbu'@'localhost'`.
+
+### Schema 
+- **Tables:** 
+1.`emp` (empno, ename, job, mgr, hiredate, sal, comm, deptno), 
+2.`dept` (deptno, dname, location), 
+3.`salgrade` (grade, losal, hisal).
+- **Sample Data:** 14 employees, 5 departments, 6 salary grades
+_______________________________________________________________________________________________________________
+### 1
+**Question:**  
+Write a  query to grant user 'subbu'@'localhost' the ability to select and insert into the `emp` table for columns `ename` and `empno`, while also allowing execution of a procedure `test.calcBonus` that calculates a 10% bonus based on an employee’s salary.
+   
+   CALL test.calcBonus(7369, @bonus);
+   SELECT @bonus;
++--------+-----------+
+| empno  | bonus     | 
++--------+-----------+
+
+-------------------------------------------------------------------------------------------------------------
+
+### 2
+**Question:**  
+Write a  query to grant user 'subbu'@'localhost' permission to delete from `dept` and update `emp` only if the user has an active role 'manager', and also allow creating views in the `test` database.
+
+`subbu` can delete from `dept`, update `emp`, and create views in `test` only when the `manager` role is activated. No procedure involved.
+
+  
+   DELETE FROM dept WHERE deptno = 50;
+    select * from dept;
+   
+   - ***Output:** 
++--------+------------+----------+
+| deptno | dname      | location |
++--------+------------+----------+
+
+-------------------------------------------------------------------------------------------------------------
+
+### 3
+**Question:**  
+Write a  query to revoke the ability of user 'subbu'@'localhost' to insert into `emp` and execute any procedures in the `test` database, while ensuring previously granted select privileges on `ename` and `empno` remain intact.
+ 
+`subbu` loses insert privileges on `emp` and execute privileges on all procedures (e.g., `calcBonus`), but retains `SELECT` on `ename` and `empno` from Query 1.
+
+   
+   CALL test.calcBonus(7369, @bonus);
+   
+   - **Output:** 
+ERROR 1370 (42000): execute command denied to user 'subbu'@'localhost' for routine 'test.calcBonus'
+
+--------------------------------------------------------------------------------------------------------------
+
+### 4
+**Question:**  
+Write a  query to permit user 'subbu'@'localhost' to update `salgrade`, create temporary tables, and grant these same privileges to others, but only within the `test` database.
+
+`subbu` can update `salgrade`, create temporary tables in `test`, and grant these privileges to others. No procedure involved.
+
+
+   UPDATE salgrade SET losal = 800 WHERE grade = 1;
+    select * from salgrade;
+
+   - **Output:** Updates `losal` to 800 for grade 1.
+ select * from salgrade;
++-------+---------+---------+
+| grade | losal   | hisal   |
++-------+---------+---------+
+
+---------------------------------------------------------------------------------------------------------------
+
+### 5
+
+**Question:**  
+Write a  query to revoke from user 'subbu'@'localhost' the ability to delete from `dept`, drop any tables in `test`, and execute a specific procedure `test.empCount` that counts employees.
+
+
+`subbu` loses delete on `dept`, drop on `test` tables, and execute on `empCount`, but retains other privileges.
+
+  
+   CALL test.empCount(@total);
+  
+      **Output:** 
+ERROR 1370 (42000): execute command denied to user 'subbu'@'localhost' for routine 'test.empCount'
+
+---------------------------------------------------------------------------------------------------------------
+
+### 6
+**Question:**  
+Write a  query to allow user 'subbu'@'localhost' to create and manage triggers on `emp`, grant select and update on a view `test.empView` based on `emp`, and propagate these privileges to another user.
+
+`subbu` can create/drop triggers on `emp`, select/update `empView`, and grant these to others. (Assumes `empView` exists; e.g., `CREATE VIEW empView AS SELECT empno, ename, sal FROM emp;`).
+
+
+   CREATE TRIGGER emp_trig BEFORE INSERT ON emp FOR EACH ROW SET NEW.sal = 1000;
+
+INSERT INTO emp (empno, ename, job, mgr, hiredate, sal, comm, deptno)VALUES (8000, 'JOHN', 'ANALYST', 7566, '2025-03-20', 2500, NULL, 20);
+
+ SELECT empno, ename, sal FROM emp WHERE empno = 8000;
+   
+   - **Output:** 
++-------+-------+---------+
+| empno | ename | sal     |
++-------+-------+---------+
+
+---------------------------------------------------------------------------------------------------------------
+
+### 7
+**Question:**  
+Write a  query to remove from user 'subbu'@'localhost' the ability to update `salgrade`, alter any table structure in `test`, and execute all functions, while ensuring select privileges on `dept` persist.
+ 
+`subbu` loses update on `salgrade`, alter on `test` tables, and execute on all functions (e.g., `getDeptAvgSal`), but keeps `SELECT` on `dept` if previously granted.
+
+  SELECT test.getDeptAvgSal(20);
+
+   - **Output:** 
+ERROR 1370 (42000): execute command denied to user 'subbu'@'localhost' for routine 'test.getDeptAvgSal
+---------------------------------------------------------------------------------------------------------------
+
+### 8
+**Question:**  
+Write a  query to grant user 'subbu'@'localhost' the ability to create indexes on `emp`, manage event scheduling in `test`, and execute a procedure `test.updateSal` that updates an employee’s salary, with a limit of 1000 connections per hour.
+ 
+`subbu` can create indexes on `emp`, manage events in `test`, and execute `updateSal` within a 1000/hour connection limit.
+
+ 
+   CALL test.updateSal(7369, 900);
+   SELECT sal FROM test.emp WHERE empno = 7369;
+   
+   - **Output:**
++--------+
+| sal    |
++--------+
+
+---------------------------------------------------------------------------------------------------------------
+
+### 9
+**Question:**  
+Write a  query to revoke all privileges on the `test` database from user 'subbu'@'localhost', including any role-based permissions, and restrict the user to read-only access on `salgrade`.
+ 
+`subbu` loses all privileges on `test`, including roles, and gains only `SELECT` on `salgrade`.
+
+  
+   SELECT * FROM test.salgrade;
+   
+   - **Output:**
++-------+---------+---------+
+| grade | losal   | hisal   |
++-------+---------+---------+
+
+---------------------------------------------------------------------------------------------------------------
+

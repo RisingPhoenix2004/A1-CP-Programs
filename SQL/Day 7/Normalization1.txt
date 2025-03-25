@@ -1,0 +1,351 @@
+
+#### **Question 1: Determine NF for MOVIE**
+
+**Relation: MOVIE** 
+ 
+| Movie_ID | Title       | Director      | Studio      | Studio_Location |  
+|----------|-------------|---------------|-------------|-----------------|  
+| 101      | Star Wars   | George Lucas  | Lucasfilm   | California      |  
+| 102      | The Matrix  | Wachowskis    | Warner Bros | New York        |  
+
+**Functional Dependencies:**  
+- Movie_ID → Title, Director  
+- Movie_ID → Studio  
+- Studio → Studio_Location  
+
+--------------------------------------------------------------------------------------------------------------
+
+#### **Question 2: Determine NF for EMPLOYEE_PROJECT**
+**Relation: EMPLOYEE_PROJECT** 
+ 
+| Emp_ID | Project_ID | Project_Name | Hours |  
+|--------|------------|--------------|-------|  
+| 201    | P1         | Apollo       | 40    |  
+| 201    | P2         | Gemini       | 30    |  
+| 202    | P1         | Apollo       | 20    |  
+
+**Functional Dependencies:**  
+- Emp_ID, Project_ID → Hours  
+- Project_ID → Project_Name  
+
+--------------------------------------------------------------------------------------------------------------
+
+#### **Question 3: Determine NF for ORDER_DETAILS**
+
+**Relation: ORDER_DETAILS**
+  
+| Order_ID | Item_ID | Item_Name | Quantity | Supplier | Supplier_Phone |  
+|----------|---------|-----------|----------|----------|----------------|  
+| 301      | I1      | Laptop    | 5        | Dell     | 555-1234       |  
+| 302      | I2      | Mouse     | 10       | Logitech | 555-5678       |  
+
+**Functional Dependencies:** 
+ 
+- Order_ID, Item_ID → Quantity  
+- Item_ID → Item_Name  
+- Item_ID → Supplier  
+- Supplier → Supplier_Phone  
+
+--------------------------------------------------------------------------------------------------------------
+
+#### **Question 4: Determine NF for LIBRARY**
+**Relation: LIBRARY**  
+| Book_ID | Title | Author        | Genre    |  
+|---------|-------|---------------|----------|  
+| B1      | Dune  | Frank Herbert | Sci-Fi   |  
+| B2      | 1984  | George Orwell | Dystopia |  
+
+**Functional Dependencies:**  
+- Book_ID → Title  
+- Book_ID → Author  
+- Author → Genre  
+
+--------------------------------------------------------------------------------------------------------------
+
+#### **Question 5: Determine NF for CUSTOMER_ORDER**
+
+**Relation: CUSTOMER_ORDER**
+  
+| Cust_ID | Order_ID | Product | Order_Date |  
+|---------|----------|---------|------------|  
+| C1      | O1       | Phone   | 2023-01-15 |  
+| C1      | O2       | Laptop  | 2023-02-10 |  
+| C2      | O3       | Tablet  | 2023-03-05 |  
+
+**Functional Dependencies:**
+ 
+- Cust_ID, Order_ID → Product, Order_Date  
+
+--------------------------------------------------------------------------------------------------------------
+
+#### **Question 6: Bring CUSTOMER to 1NF**
+
+**Relation: CUSTOMER**
+ 
+| Cust_ID | Name | Orders |  
+|---------|------|--------|  
+| C1      | Alice | O1, O2 |  
+| C2      | Bob   | O3     |  
+
+**Task:** Normalize the relation to 1NF by addressing the multi-valued attribute "Orders."
+
+--------------------------------------------------------------------------------------------------------------
+
+#### **Question 7: Bring SALES to 2NF**
+
+**Relation: SALES** 
+ 
+| Sale_ID | Product_ID | Product_Name | Quantity | Category |  
+|---------|------------|--------------|----------|----------|  
+| S1      | P1         | Chair        | 2        | Furniture |  
+| S1      | P2         | Table        | 1        | Furniture |  
+| S2      | P3         | Lamp         | 3        | Lighting  |  
+
+**Functional Dependencies:**
+  
+- Sale_ID, Product_ID → Quantity  
+- Product_ID → Product_Name, Category  
+
+**Task:** Normalize the relation to 2NF by addressing partial dependencies.
+
+--------------------------------------------------------------------------------------------------------------
+
+#### **Question 8: Bring INVENTORY to 2NF**
+
+**Relation: INVENTORY**  
+| Warehouse_ID | Item_ID | Item_Name | Stock | Manager |  
+|--------------|---------|-----------|-------|---------|  
+| W1           | I1      | Pen       | 100   | John    |  
+| W1           | I2      | Pencil    | 200   | John    |  
+| W2           | I3      | Eraser    | 150   | Mary    |  
+
+**Functional Dependencies:**  
+
+- Warehouse_ID, Item_ID → Stock  
+- Item_ID → Item_Name  
+- Warehouse_ID → Manager  
+
+**Task:** Normalize the relation to 2NF by addressing partial dependencies.
+
+--------------------------------------------------------------------------------------------------------------
+
+#### **Question 9: Bring TEACHER to 3NF**
+
+**Relation: TEACHER**  
+| Teacher_ID | Subject | Room | Building |  
+|------------|---------|------|----------|  
+| T1         | Math    | R101 | Science  |  
+| T2         | Physics | R102 | Science  |  
+| T3         | History | R201 | Arts     |  
+
+**Functional Dependencies:** 
+ 
+- Teacher_ID → Subject, Room  
+- Room → Building  
+
+**Task:** Normalize the relation to 3NF by addressing transitive dependencies.
+
+--------------------------------------------------------------------------------------------------------------
+
+#### **Question 10: Bring PROJECT to 3NF**
+
+**Relation: PROJECT**  
+| Proj_ID | Manager | Dept_ID | Dept_Name |  
+|---------|---------|---------|-----------|  
+| P1      | Alice   | D1      | HR        |  
+| P2      | Bob     | D2      | IT        |  
+| P3      | Charlie | D1      | HR        |  
+
+**Functional Dependencies:**
+  
+- Proj_ID → Manager, Dept_ID  
+- Dept_ID → Dept_Name  
+
+**Task:** Normalize the relation to 3NF by addressing transitive dependencies.
+---------------------------------------------------------------------------------------------------------------
+
+#### **Question 11: Determine NF**
+  
+**Relation: PROJECT_ASSIGNMENT**
+  
+| Project_ID | Employee_ID | Task_ID | Task_Name | Emp_Name | Dept_ID | Dept_Name |  
+|------------|-------------|---------|-----------|----------|---------|-----------|  
+| P1         | E1          | T1      | Design    | Alice    | D1      | HR        |  
+| P1         | E2          | T2      | Testing   | Bob      | D2      | IT        |  
+| P2         | E1          | T3      | Review    | Alice    | D1      | HR        |  
+
+**Functional Dependencies:** 
+ 
+- Project_ID, Employee_ID, Task_ID → (no other attributes directly)  
+- Task_ID → Task_Name  
+- Employee_ID → Emp_Name, Dept_ID  
+- Dept_ID → Dept_Name  
+
+---------------------------------------------------------------------------------------------------------------
+
+#### **Question 12: Determine NF** 
+ 
+**Relation: COURSE_ENROLLMENT** 
+ 
+| Student_ID | Course_ID | Section_ID | Instructor | Course_Name | Dept_ID | Dept_Location |  
+|------------|-----------|------------|------------|-------------|---------|---------------|  
+| S1         | C1        | SEC1       | Prof. Lee  | Databases   | D1      | Building A    |  
+| S1         | C2        | SEC2       | Prof. Kim  | Algorithms  | D2      | Building B    |  
+| S2         | C1        | SEC1       | Prof. Lee  | Databases   | D1      | Building A    |  
+
+**Functional Dependencies:** 
+ 
+- Student_ID, Course_ID, Section_ID → Instructor  
+- Course_ID → Course_Name, Dept_ID  
+- Dept_ID → Dept_Location  
+- Course_ID, Section_ID → Instructor  
+
+---------------------------------------------------------------------------------------------------------------
+
+#### **Question 13: Bring a Relation to 1NF** 
+ 
+**Relation: CUSTOMER_PURCHASES**
+ 
+| Cust_ID | Cust_Name   | Orders (Order_ID, Product, Date)         |  
+|---------|-------------|------------------------------------------|  
+| C1      | John Smith  | (O1, Laptop, 2023-05-01), (O2, Mouse, 2023-05-02) |  
+| C2      | Mary Wilson | (O3, Phone, 2023-05-03)                  |  
+
+---------------------------------------------------------------------------------------------------------------
+
+#### **Question 14: Bring a Relation to 2NF** 
+
+**Relation: EMPLOYEE_SCHEDULE**  
+
+| Emp_ID | Shift_ID | Project_ID | Project_Name | Shift_Date | Dept_ID | Dept_Manager | Location |  
+|--------|----------|------------|--------------|------------|---------|--------------|----------|  
+| E1     | S1       | P1         | Website      | 2023-06-01 | D1      | Ms. Carter   | Office A |  
+| E1     | S2       | P2         | App Dev      | 2023-06-02 | D1      | Ms. Carter   | Office A |  
+| E2     | S3       | P1         | Website      | 2023-06-03 | D2      | Mr. Evans    | Office B |  
+
+**Functional Dependencies:** 
+ 
+- Emp_ID, Shift_ID → Shift_Date, Project_ID  
+- Project_ID → Project_Name  
+- Emp_ID → Dept_ID  
+- Dept_ID → Dept_Manager, Location  
+
+---------------------------------------------------------------------------------------------------------------
+
+#### **Question 15: Bring a Relation to 3NF** 
+ 
+**Relation: SALES_RECORD** 
+ 
+| Sale_ID | Product_ID | Customer_ID | Cust_Name | Prod_Name | Prod_Category | Cat_Description |  
+|---------|------------|-------------|-----------|-----------|---------------|-----------------|  
+| S1      | PR1        | C1          | Jane Doe  | Monitor   | Electronics   | High-Tech       |  
+| S2      | PR2        | C2          | Sam Lee   | Keyboard  | Electronics   | High-Tech       |  
+| S3      | PR3        | C1          | Jane Doe  | Chair     | Furniture     | Home Goods      |  
+
+**Functional Dependencies:** 
+ 
+- Sale_ID → Product_ID, Customer_ID  
+- Product_ID → Prod_Name, Prod_Category  
+- Customer_ID → Cust_Name  
+- Prod_Category → Cat_Description  
+
+---------------------------------------------------------------------------------------------------------------
+
+#### **Question 16: Determine NF**  
+
+**Relation: RESEARCH_COLLABORATION** 
+ 
+| Researcher_ID | Project_ID | Lab_ID | Lab_Name | Researcher_Name | Project_Name | Lab_Location | Funding_Agency | Agency_Contact |  
+|---------------|------------|--------|----------|-----------------|--------------|--------------|----------------|----------------|  
+| R1            | P1         | L1     | BioLab   | Dr. Smith       | Gene Study   | Boston       | NIH            | John Doe       |  
+| R2            | P1         | L1     | BioLab   | Dr. Jones       | Gene Study   | Boston       | NIH            | John Doe       |  
+| R1            | P2         | L2     | ChemLab  | Dr. Smith       | Chem Synth   | Chicago      | NSF            | Jane Roe       |  
+
+**Functional Dependencies:**  
+
+- Researcher_ID, Project_ID, Lab_ID → (no other attributes directly)  
+- Researcher_ID → Researcher_Name  
+- Project_ID → Project_Name  
+- Lab_ID → Lab_Name, Lab_Location  
+- Project_ID, Lab_ID → Funding_Agency  
+- Funding_Agency → Agency_Contact  
+
+---------------------------------------------------------------------------------------------------------------
+
+#### **Question 17: Determine NF**
+  
+**Relation: EVENT_LOGISTICS** 
+ 
+| Event_ID | Venue_ID | Organizer_ID | Event_Name | Venue_Name | Venue_City | Organizer_Name | Org_Dept | Dept_Head | Event_Date |  
+|----------|----------|--------------|------------|------------|------------|----------------|----------|-----------|------------|  
+| E1       | V1       | O1           | Tech Fair  | Grand Hall | New York   | Alice Brown    | Marketing| Mr. Lee   | 2023-07-01 |  
+| E2       | V2       | O2           | Art Gala   | Art Center | Los Angeles| Bob Smith      | Events   | Ms. Kim   | 2023-07-02 |  
+| E1       | V1       | O3           | Tech Fair  | Grand Hall | New York   | Clara Davis    | Marketing| Mr. Lee   | 2023-07-01 |  
+
+**Functional Dependencies:** 
+ 
+- Event_ID, Venue_ID, Organizer_ID → Event_Date  
+- Event_ID → Event_Name  
+- Venue_ID → Venue_Name, Venue_City  
+- Organizer_ID → Organizer_Name, Org_Dept  
+- Org_Dept → Dept_Head  
+- Event_ID, Venue_ID → Event_Name, Venue_Name, Venue_City  
+
+---------------------------------------------------------------------------------------------------------------
+
+#### **Question 18: Bring a Relation to 1NF**  
+
+**Relation: TRAVEL_BOOKING**
+  
+| Traveler_ID | Name       | Trips (Trip_ID, Destination, Date, Flight, Hotel)         |  
+|-------------|------------|-----------------------------------------------------------|  
+| T1          | Emma Brown | (TR1, Paris, 2023-08-01, AF123, Hilton), (TR2, Tokyo, 2023-08-05, JL456, Marriott) |  
+| T2          | Noah Lee   | (TR3, London, 2023-08-03, BA789, Ritz)                    |  
+
+**Task:** The TRAVEL_BOOKING relation is not in 1NF due to the multi-valued and composite attribute "Trips." Normalize the relation to 1NF by splitting it into appropriate relations.
+
+---------------------------------------------------------------------------------------------------------------
+
+#### **Question 19: Bring a Relation to 2NF**  
+
+**Relation: MANUFACTURING_PROCESS**
+  
+| Factory_ID | Machine_ID | Product_ID | Batch_ID | Product_Name | Machine_Type | Factory_Location | Batch_Date | Prod_Category | Cat_Standard |  
+|------------|------------|------------|----------|--------------|--------------|------------------|------------|---------------|--------------|  
+| F1         | M1         | PR1        | B1       | Widget A     | Assembly     | Detroit          | 2023-09-01 | Industrial    | ISO-9001     |  
+| F1         | M2         | PR2        | B2       | Widget B     | Cutting      | Detroit          | 2023-09-02 | Industrial    | ISO-9001     |  
+| F2         | M3         | PR3        | B3       | Gadget X     | Packaging    | Seattle          | 2023-09-03 | Consumer      | CE-Mark      |  
+
+**Functional Dependencies:**  
+
+- Factory_ID, Machine_ID, Product_ID, Batch_ID → Batch_Date  
+- Product_ID → Product_Name, Prod_Category  
+- Machine_ID → Machine_Type  
+- Factory_ID → Factory_Location  
+- Prod_Category → Cat_Standard  
+- Factory_ID, Machine_ID → Factory_Location, Machine_Type  
+
+---------------------------------------------------------------------------------------------------------------
+
+#### **Question 20: Bring a Relation to 3NF** 
+ 
+**Relation: SUPPLY_CHAIN** 
+ 
+| Order_ID | Supplier_ID | Part_ID | Warehouse_ID | Part_Name | Supplier_Name | Supp_City | Warehouse_Loc | Wh_City | Part_Type | Type_Spec |  
+|----------|-------------|---------|--------------|-----------|---------------|-----------|---------------|---------|-----------|-----------|  
+| O1       | S1          | PT1     | W1           | Bolt      | Acme Corp     | Dallas    | Depot A       | Miami   | Fastener  | ANSI      |  
+| O2       | S2          | PT2     | W2           | Screw     | Bolt Inc      | Houston   | Depot B       | Chicago | Fastener  | ANSI      |  
+| O3       | S1          | PT3     | W1           | Nut       | Acme Corp     | Dallas    | Depot A       | Miami   | Connector | ISO       |  
+
+**Functional Dependencies:** 
+ 
+- Order_ID → Supplier_ID, Part_ID, Warehouse_ID  
+- Part_ID → Part_Name, Part_Type  
+- Supplier_ID → Supplier_Name, Supp_City  
+- Warehouse_ID → Warehouse_Loc, Wh_City  
+- Part_Type → Type_Spec  
+- Supplier_ID, Warehouse_ID → Supp_City, Wh_City  
+
+**Task:** The SUPPLY_CHAIN relation is in 2NF but not in 3NF due to a transitive dependency. Normalize the relation to 3NF by splitting it into appropriate relations. Remove the attributes that are dependent on a non-key attribute, create a new relation with the non-key attribute as a primary key, and the dependent non-key attribute as a dependent.
+
+
