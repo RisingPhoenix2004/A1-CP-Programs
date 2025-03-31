@@ -1,0 +1,52 @@
+Reference: 
+1. https://www.geeksforgeeks.org/treap-a-randomized-binary-search-tree/
+2. https://www.geeksforgeeks.org/implementation-of-search-insert-and-delete-in-treap/
+
+Min Heap and Max Heap:
+A heap is a specialized tree-based data structure that satisfies the heap property. It is a complete binary
+tree where each parent node is either greater than (max heap) or less than (min heap)
+its children. The root node is the maximum or minimum value in the heap.
+Heapify Up and Heapify Down:
+Heapify up is used to insert a new element into the heap. It starts at the last nod
+e and moves up the tree, swapping the node with its parent if it is larger than its parent
+Heapify down is used to remove the root node from the heap. It starts at the root nod
+e and moves down the tree, swapping the node with its child if it is smaller than its child
+
+What if the root node is deleted ? how would you replace it with left lower value and right lower value ?
+
+Tree Balancing:
+Tree balancing is a technique used to maintain the balance of a binary search tree (BST) after insertion
+or deletion of nodes. It ensures that the tree remains approximately balanced, which is essential for
+efficient search, insertion, and deletion operations.
+
+Trie:
+
+What is Trie: Combination of Min Heap / Max Heap and Binary Search Tree
+A trie, also known as a prefix tree, is a tree-like data structure in which each node
+is associated with a string. It is a collection of strings, where each string is a sequence
+
+Treap: Tree + Heap
+A treap is a combination of a binary search tree (BST) and a heap. It is
+a self-balancing binary search tree that uses a random priority to balance the tree.
+
+Key , X -> Value that is inserted
+Value, Y -> Random Priority based on Heap Property
+
+It is randomized Data structure
+
+Deletes based on x value
+
+Binary Search Tree 
+2 4 3 1 7 5                        
+                                     2
+                                  1    4
+                                      3   7
+                                         5
+
+Treap with random priority: 2 4 3 1 7 5 
+                    	5 / 96
+                  3 / 87       7 / 23
+             1 / 65    4 / 28 
+                  2 / 32  
+
+        
