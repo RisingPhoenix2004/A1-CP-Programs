@@ -61,3 +61,57 @@ Constraints:
 - 0 <= Xi, Yi < numDishes  
 - All the dependency pairs are unique.
  */
+
+ import java.util.*;
+
+ public class MasterChef {
+	 public static List<Integer> findOrder(int numDishes, int[][] dependencies) {
+		 List<Integer> order = new ArrayList<>();
+		 Map<Integer, List<Integer>> adjList = new HashMap<>();
+		 int[] inDegree = new int[numDishes];
+		 
+		 // Build adjacency list and in-degree array
+		 for (int[] dep : dependencies) {
+			 int dish = dep[0], prerequisite = dep[1];
+			 adjList.putIfAbsent(prerequisite, new ArrayList<>());
+			 adjList.get(prerequisite).add(dish);
+			 inDegree[dish]++;
+		 }
+		 
+		 // Topological Sorting using Kahn's Algorithm (BFS)
+		 Queue<Integer> queue = new LinkedList<>();
+		 for (int i = 0; i < numDishes; i++) {
+			 if (inDegree[i] == 0) queue.offer(i);
+		 }
+		 
+		 while (!queue.isEmpty()) {
+			 int curr = queue.poll();
+			 order.add(curr);
+			 if (adjList.containsKey(curr)) {
+				 for (int next : adjList.get(curr)) {
+					 inDegree[next]--;
+					 if (inDegree[next] == 0) queue.offer(next);
+				 }
+			 }
+		 }
+		 
+		 return order.size() == numDishes ? order : new ArrayList<>();
+	 }
+ 
+	 public static void main(String[] args) {
+		 Scanner scanner = new Scanner(System.in);
+		 int numDishes = scanner.nextInt();
+		 int m = scanner.nextInt();
+		 int[][] dependencies = new int[m][2];
+		 
+		 for (int i = 0; i < m; i++) {
+			 dependencies[i][0] = scanner.nextInt();
+			 dependencies[i][1] = scanner.nextInt();
+		 }
+		 
+		 List<Integer> result = findOrder(numDishes, dependencies);
+		 System.out.println(result);
+		 scanner.close();
+	 }
+ }
+ 
