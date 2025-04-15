@@ -1,0 +1,55 @@
+Exceptions in Java:
+Exceptions are events that occur during the execution of a program that disrupt the normal flow of instructions. 
+They can be errors, unexpected conditions, or user input that the program is not designed to handle.
+
+Eceptions that are subclass of Runtime / Unchecked Expections / Runtime Exception:
+The Java Virtual Machine (JVM) throws a RuntimeException when it encounters an error that occurs during runtime
+
+Checked Exceptions -> Compile Time -> must be handled by user -> throw / throws
+Unchecked Exceptions -> Runtime -> No need to handle by user
+
+Exception Key words:
+Try catch finally
+try -> code that might throw an exception
+catch -> exception handling code
+finally -> code that will be executed regardless of whether an exception was thrown or not.
+throw -> to manually throw a execution 
+throws -> to not handle a said exception and throw back to caller -> atlast JVM
+
+Practical Use of Finally block:
+This is useful for releasing resources such as closing a file or database connection.
+
+Finally doesnt run only for the statement -> System.exit();
+
+Catch statements order matters -> Yes
+
+From subclass to Parent Class -> catch block orders
+
+If written in order of hierarchy -> compile error -> unreachable statements
+
+Types of RuntimeException:
+1. ArithmeticException
+2. NullPointerException
+3. ArrayIndexOutOfBoundsException
+4. ClassCastException
+5. StringIndexOutOfBoundsException
+6. NumberFormatException
+7. IndexOutOfBoundsException
+8. IllegalArgumentException
+9. ArrayStoreException
+10. ConcurrentModificationException
+11. InputMismatchException
+12. NegativeArraySizeException
+
+
+printStackTrace() -> prints the line stack where the exception occurred
+getMessage() -> prints the message exception in string format
+
+Can Have nested exception try and catch blocks
+
+Static Intializiation Block -> Called once when object is loaded 
+static {
+
+}
+
+ nested
