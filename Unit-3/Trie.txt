@@ -1,0 +1,19 @@
+//
+/Trie:
+Tree based data structure used for storing collection of strings and perform search opeations on them
+Property:
+1. If two strings have common prefix, then they have same ancestor in trie
+Sort a collection of strings
+String with a given prefix is present or not
+These can be done using HashTable but trie is more efficient
+Trie can be used for prefix based searching whereas HashTable cannot be used
+Time complexity -> O(L) where L is number of words in Query String
+Less than O(L) if string not present in trie
+
+Leaf nodes contain -> entire words formed by above node prefixs
+Each node -> a string
+Each edge -> Character
+Every node contains:
+-> hashmap or array of pointers -> eachc index representing a single character, number or spl character
+/
+For a given trie, if ca and cat are present. How will u delete "ca" ?

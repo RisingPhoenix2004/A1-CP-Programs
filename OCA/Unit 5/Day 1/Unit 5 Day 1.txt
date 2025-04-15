@@ -53,3 +53,45 @@ static {
 }
 
  nested
+
+
+Throwable class -> for throws object -> only errors and Exceptions
+
+
+Ducking Exception -> Throw back to caller
+
+raise -> 
+
+Is Throwable an interface ?  No
+
+
+Can Catch Errors ?? Yes 
+Sample Code:
+
+import java.util.*;
+import java.lang.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        try{
+            throw new Error();
+        //int i = sc.nextInt();
+        
+        }
+        catch(Error e){
+        System.out.println(e.getMessage());
+           e.printStackTrace();
+        }
+    }
+}
+Output:
+null
+java.lang.Error
+	at Main.main(Main.java:9)
+
+Assertion:
+assert boolean_expression ;
+If boolean_expression is false, then it throws an AssertionError with the specified message.
+assert boolean_expression ;
+-ea -> enable assertion
+
