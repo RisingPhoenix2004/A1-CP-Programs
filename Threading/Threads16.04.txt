@@ -1,0 +1,59 @@
+Threads:
+Java Threads -> process based multitasking
+Thread based multitasking -> Java
+
+Separate Execution path within a process
+lightweight process of a main process
+Has its own stack of memory, etc
+Static -> same copy with all the threads
+
+Why prefer implementing runnable interface ?
+-> Allow Multiple Inheritance
+-> Single method (run ()), <-> Functional interface
+-> We have to implement run() method as it is abstract, whereas thread has a empty run() that must be overridden
+-> 
+
+Daemon Thread:
+-> background thread that can continue running even if main thread terminates
+-> JVM terminates when all non-daemon threads finish execution
+-> daemon thread is not daemon by default, we have to set it as daemon thread using setDaemon
+
+To be a thread of control -> must call start
+never call run directly as it is not thread behaviour
+
+Thread Priority, Yield, 
+
+-> Yield -> Allows thread to voluntarily give up its current execution time slice, allowing thread of other priorities to execute
+Thread.yield() -> thread moves from running to ready state and scheduler decides which thread to execute next
+-> Sleep -> Thread is just inactive for that duration and becomes in runnable state
+
+
+Life cycle of Thread:
+1. New
+2. Runnable
+3. Running
+4. Dead
+5. Terminated
+6. Blocked
+7. Waiting
+8. Timed Waiting
+9. Sleeping
+10. Notifiable
+
+Thread Life Cycle: https://www.google.com/imgres?q=thread%20life%20cycle%20in%20java&imgurl=https%3A%2F%2Fwww.scientecheasy.com%2Fwp-content%2Fuploads%2F2020%2F06%2Fthread-life-cycle.png&imgrefurl=https%3A%2F%2Fwww.scientecheasy.com%2F2020%2F08%2Flife-cycle-of-thread-in-java.html%2F&docid=lSmyNJUboPgT_M&tbnid=TZ1ae9Qf-AY6_M&vet=12ahUKEwiawenanNyMAxUZSWwGHbBqNbgQM3oECGQQAA..i&w=600&h=500&hcb=2&ved=2ahUKEwiawenanNyMAxUZSWwGHbBqNbgQM3oECGQQAA
+
+Each scheduler uses a Time Splicing algorithm: like Round Robin
+Each thread gets a time slice, called a time quantum, to execute
+If a thread completes its task within the time slice, it is removed from the ready queue
+If a thread does not complete its task within the time slice, it is moved back to the ready
+queue and the next thread is given a time slice
+
+Join():
+-> Waits for the thread to die
+-> Returns the value returned by the thread's run method
+-> If the thread is already dead, it returns immediately with the value returned by the thread's run
+method
+-> If the thread is still alive, it waits until the thread dies and then returns the value returned
+by the thread's run method
+-> If the thread is interrupted while waiting, it throws InterruptedException
+
