@@ -129,3 +129,34 @@ class IndexPairs {
         }
     }
 }
+
+
+// import java.util.*;
+// class IndexPairs{
+//     public static void main(String... args){
+//         Scanner sc = new Scanner(System.in);
+//         String s = sc.nextLine();
+//         String[] words = sc.nextLine().split(" ");
+//         ArrayList<int[]> pairs = new ArrayList<>();
+//         for (String w : words){
+//             int start = 0;
+//             while((start = s.indexOf(w, start))!= -1){
+//                 pairs.add(new int[]{start, start + w.length() - 1});
+//                 start ++;
+//             }
+//         }
+//         pairs = sortpairs1(pairs);
+//         for(int [] pair : pairs){
+//             System.out.println(pair[0] + " " + pair[1]);
+//         }
+//     }
+//     private static ArrayList<int[]> sortpairs1(ArrayList<int[]> pairs){
+//         pairs.sort((a,b) -> {
+//             if(a[0] == b[0]){
+//                 return a[1] - b[1];
+//             }
+//             return a[0] - b[0];
+//         });
+//         return pairs;
+//     }
+// }

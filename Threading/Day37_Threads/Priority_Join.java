@@ -31,7 +31,7 @@ class Priority_Join {
 			arr[i].start();
 
       try {
-        // arr[i].join();
+         arr[i].join();
       }
       catch(Exception e)
       {

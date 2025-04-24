@@ -1,0 +1,5 @@
+DisJoint Sets:
+A data structure that keeps track of a partition of a set into disjoint subsets, supporting union and find operations efficiently.
+
+DisJoint Set Operations:
+1. **MakeSet**: Creates a new set containing a single element.

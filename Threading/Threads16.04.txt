@@ -57,3 +57,4 @@ method
 by the thread's run method
 -> If the thread is interrupted while waiting, it throws InterruptedException
 
+Write locks:

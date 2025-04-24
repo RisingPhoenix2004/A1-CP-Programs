@@ -1,0 +1,31 @@
+Write locks
+
+Locking & Threads:
+-------------------
+### Locks
+A lock is a synchronization primitive that allows only one thread to access a shared resource at a time.
+### Locks in Java
+Java provides the `synchronized` keyword to create locks. The `synchronized` keyword can be
+applied to methods or blocks of code.
+### Locking in Java
+java
+public class BankAccount {
+    private int balance = 0;
+    public void withdraw(int amount) {
+        synchronized (this) {
+            if (balance >= amount) {
+                balance -= amount;
+
+
+synchronization and locks:
+1. Only one thread can acquire a lock
+2. Methods can only be synchronized
+3. If a threads acquires a lock on an object -> then no other thread can access any other method that is synchronized
+4. 
+
+
+If both exists, then multiple threads can call unsync
+
+
+
+notify, notifyall, wait ->  final methods in the Object class
