@@ -1,0 +1,265 @@
+
+
+### Question 1
+ 
+Transaction T1 transfers $500 from Account A (balance = $1000) to Account B (balance = $200) by executing:  
+- `UPDATE Accounts SET balance = balance - 500 WHERE account_id = 'A';`  
+- `UPDATE Accounts SET balance = balance + 500 WHERE account_id = 'B';`  
+The database crashes after the first `UPDATE` but before the second `UPDATE`. What does Atomicity ensure after recovery?
+
+A) Account A’s balance will be $500, and Account B’s balance will remain $200.  
+B) Both Account A and Account B will revert to their original balances ($1000 and $200).  
+C) Account A’s balance will be $1000, and Account B’s balance will be $700.  
+D) The transaction will be partially committed, leaving the database in an inconsistent state.
+
+---
+
+### Question 2
+ 
+Transaction T1 updates a customer’s credit limit:  
+- `UPDATE Customers SET credit_limit = 5000 WHERE customer_id = 101;`  
+Transaction T1 commits, and the system uses write-ahead logging (WAL). Immediately after the commit, the disk crashes. What does Durability ensure after the system restarts?
+
+A) The credit limit for customer 101 will be reset to its original value.  
+B) The credit limit for customer 101 will be 5000, as the transaction was committed.  
+C) The update will be lost if it was not written to disk before the crash.  
+D) The update will be re-applied only if a checkpoint occurred after the commit.
+---
+
+### Question 3
+ 
+Transaction T1 updates an employee’s salary:  
+- `UPDATE Employees SET salary = 60000 WHERE emp_id = 201;`  
+Concurrently, Transaction T2 reads the same employee’s salary:  
+- `SELECT salary FROM Employees WHERE emp_id = 201;`  
+The database uses the Read Uncommitted isolation level. T2 reads the salary before T1 commits. What does Isolation fail to prevent in this scenario?
+
+A) A non-repeatable read.  
+B) A dirty read.  
+C) A phantom read.  
+D) A lost update.
+
+---
+
+### Question 4
+ 
+Transaction T1 inserts a new order:  
+- `INSERT INTO Orders (order_id, customer_id, amount) VALUES (1001, 301, 1500);`  
+The `customer_id` 301 does not exist in the `Customers` table, which has a foreign key constraint on `Orders.customer_id`. What does Consistency ensure in this scenario?
+
+A) The transaction will commit, and the foreign key constraint will be ignored.  
+B) The transaction will be rolled back due to the foreign key constraint violation.  
+C) The transaction will be paused until customer 301 is inserted into the `Customers` table.  
+D) The transaction will commit, and the foreign key will be updated later.
+
+---
+
+### Question 5
+ Transaction T1 updates a product’s price:  
+- `UPDATE Products SET price = 99.99 WHERE product_id = 401;`  
+Concurrently, Transaction T2 reads the same product’s price:  
+- `SELECT price FROM Products WHERE product_id = 401;`  
+The database uses the Repeatable Read isolation level with multiversion concurrency control (MVCC). T2 reads the price before T1 commits. What does Isolation ensure?
+
+A) T2 will read the updated price (99.99) written by T1.  
+B) T2 will read the original price before T1’s update.  
+C) T2 will be blocked until T1 commits.  
+D) T2 will cause a deadlock with T1.
+
+---
+
+### Question 6
+ Transaction T1 transfers $300 from Account X (balance = $800) to Account Y (balance = $400):  
+- `UPDATE Accounts SET balance = balance - 300 WHERE account_id = 'X';`  
+- `UPDATE Accounts SET balance = balance + 300 WHERE account_id = 'Y';`  
+Concurrently, Transaction T2 transfers $200 from Account Y to Account X:  
+- `UPDATE Accounts SET balance = balance - 200 WHERE account_id = 'Y';`  
+- `UPDATE Accounts SET balance = balance + 200 WHERE account_id = 'X';`  
+The database uses strict two-phase locking (2PL) with the Serializable isolation level. What does Isolation ensure?
+
+A) Both transactions will commit, leading to inconsistent balances.  
+B) One transaction will be blocked until the other commits, ensuring consistent balances.  
+C) Both transactions will be rolled back due to a deadlock.  
+D) T2 will overwrite T1’s updates, causing a lost update.
+C) Both transactions will be rolled back due to a deadlock.  
+---
+
+### Question 7
+ Transaction T1 updates a student’s grade:  
+- `UPDATE Grades SET grade = 'A' WHERE student_id = 501 AND course_id = 601;`  
+Transaction T1 commits, and the system uses a deferred write strategy (changes are written to disk after the commit). The system crashes immediately after the commit but before the changes are written to disk. What does Durability ensure?
+
+A) The grade will be reset to its original value upon recovery.  
+B) The grade will be ‘A’, as the transaction was committed.  
+C) The update will be lost, as it was not written to disk.  
+D) The update will be re-applied only if a backup exists.
+
+---
+
+### Question 8
+ Transaction T1 updates an inventory quantity:  
+- `UPDATE Inventory SET quantity = quantity - 10 WHERE item_id = 701;`  
+The `Inventory` table has a CHECK constraint (quantity >= 0), and the current quantity is 5. What does Consistency ensure in this scenario?
+
+A) The transaction will commit, and the CHECK constraint will be ignored.  
+B) The transaction will be rolled back due to the CHECK constraint violation.  
+C) The transaction will commit, and the quantity will be adjusted to 0.  
+D) The transaction will be paused until the quantity is increased.
+
+---
+
+### Question 9
+ Transaction T1 updates a book’s price:  
+- `UPDATE Books SET price = 29.99 WHERE book_id = 801;`  
+Concurrently, Transaction T2 updates the same book’s price:  
+- `UPDATE Books SET price = 34.99 WHERE book_id = 801;`  
+The database uses optimistic concurrency control with the Read Committed isolation level. What does Isolation ensure?
+
+A) T2 will overwrite T1’s update, resulting in a price of 34.99.  
+B) T2 will be blocked until T1 commits, then proceed with its update.  
+C) T2 will detect a conflict and roll back if T1 commits first.  
+D) T1 and T2 will both commit, leading to a lost update.
+
+--
+
+### Question 10
+ Transaction T1 updates a patient’s record:  
+- `UPDATE Patients SET status = 'Discharged' WHERE patient_id = 901;`  
+Concurrently, Transaction T2 reads a range of patient records, including patient 901:  
+- `SELECT * FROM Patients WHERE status = 'Admitted';`  
+The database uses the Serializable isolation level with strict two-phase locking (2PL). What does Isolation ensure?
+
+A) T2 will see patient 901 with status ‘Discharged’.  
+B) T2 will see patient 901 with its original status before T1’s update.  
+C) T2 will be blocked until T1 commits or rolls back.  
+D) T2 will cause a phantom read.
+
+---
+
+### Question 11
+ Transaction T1 updates a warehouse stock level:  
+- `UPDATE Warehouse SET stock = stock - 20 WHERE item_id = 1001 AND warehouse_id = 'WH1';`  
+- `INSERT INTO Orders (order_id, item_id, quantity) VALUES (5001, 1001, 20);`  
+The database crashes after the `UPDATE` but before the `INSERT`. The system uses write-ahead logging (WAL). What does Atomicity ensure after recovery?
+
+A) The stock will be reduced to stock - 20, but the order will not be recorded.  
+B) Both the stock update and the order insertion will be rolled back.  
+C) The stock will remain unchanged, and the order will be inserted upon recovery.  
+D) The transaction will be partially committed, leaving the database inconsistent.
+
+---
+
+### Question 12
+ Transaction T1 updates a user’s account balance after a deposit:  
+- `UPDATE Accounts SET balance = balance + 1000 WHERE user_id = 2001;`  
+T1 commits, and the system uses a log-structured storage mechanism with periodic checkpoints. The system crashes after the commit but before the checkpoint. What does Durability ensure after recovery?
+
+A) The balance will be reset to its original value.  
+B) The balance will reflect the +1000 update, as the transaction was committed.  
+C) The update will be lost if it was not written to disk before the crash.  
+D) The update will be re-applied only if a backup exists.
+---
+
+### Question 13
+ Transaction T1 updates a product’s stock:  
+- `UPDATE Products SET stock = stock - 5 WHERE product_id = 3001;`  
+Concurrently, Transaction T2 reads the same product’s stock:  
+- `SELECT stock FROM Products WHERE product_id = 3001;`  
+The database uses the Read Committed isolation level with strict two-phase locking (2PL). T2 attempts to read the stock before T1 commits. What does Isolation ensure?
+
+A) T2 will read the updated stock (stock - 5) written by T1.  
+B) T2 will read the original stock before T1’s update.  
+C) T2 will be blocked until T1 commits or rolls back.  
+D) T2 will cause a deadlock with T1.
+
+---
+### Question 14
+ Transaction T1 inserts a new employee:  
+- `INSERT INTO Employees (emp_id, department_id, salary) VALUES (4001, 501, 75000);`  
+The `department_id` 501 does not exist in the `Departments` table, which has a foreign key constraint on `Employees.department_id`. What does Consistency ensure in this scenario?
+
+A) The transaction will commit, and the foreign key constraint will be ignored.  
+B) The transaction will be rolled back due to the foreign key constraint violation.  
+C) The transaction will be paused until department 501 is inserted into the `Departments` table.  
+D) The transaction will commit, and the foreign key will be updated later.
+
+--
+
+### Question 15
+ Transaction T1 updates a ticket’s status:  
+- `UPDATE Tickets SET status = 'Closed' WHERE ticket_id = 6001;`  
+Concurrently, Transaction T2 reads the same ticket’s status:  
+- `SELECT status FROM Tickets WHERE ticket_id = 6001;`  
+The database uses the Snapshot Isolation level with multiversion concurrency control (MVCC). T2 reads the status before T1 commits. What does Isolation ensure?
+
+A) T2 will read the updated status (‘Closed’) written by T1.  
+B) T2 will read the original status before T1’s update.  
+C) T2 will be blocked until T1 commits.  
+D) T2 will cause a deadlock with T1.
+
+---
+### Question 16
+ Transaction T1 transfers $400 from Account P (balance = $1000) to Account Q (balance = $300):  
+- `UPDATE Accounts SET balance = balance - 400 WHERE account_id = 'P';`  
+- `UPDATE Accounts SET balance = balance + 400 WHERE account_id = 'Q';`  
+Concurrently, Transaction T2 transfers $200 from Account Q to Account P:  
+- `UPDATE Accounts SET balance = balance - 200 WHERE account_id = 'Q';`  
+- `UPDATE Accounts SET balance = balance + 200 WHERE account_id = 'P';`  
+The database uses a timestamp ordering protocol with the Serializable isolation level. What does Isolation ensure?
+
+A) T2 will overwrite T1’s updates, leading to inconsistent balances.  
+B) The transaction with the later timestamp will be rolled back to avoid conflicts.  
+C) Both transactions will commit, resulting in inconsistent data.  
+D) T2 will be blocked until T1 commits.
+
+---
+### Question 17
+ Transaction T1 updates a project’s budget:  
+- `UPDATE Projects SET budget = 150000 WHERE project_id = 7001;`  
+T1 commits, and the system uses a deferred write strategy (changes are written to disk after the commit). The system crashes immediately after the commit but before the changes are written to disk. What does Durability ensure?
+
+A) The budget will be reset to its original value upon recovery.  
+B) The budget will be 150000, as the transaction was committed.  
+C) The update will be lost, as it was not written to disk.  
+D) The update will be re-applied only if a backup exists.
+
+--
+
+### Question 18
+ Transaction T1 updates a vehicle’s mileage:  
+- `UPDATE Vehicles SET mileage = 55000 WHERE vehicle_id = 8001;`  
+The `Vehicles` table has a CHECK constraint (mileage >= 0), but T1 attempts to set the mileage to -1000 due to a data entry error:  
+- `UPDATE Vehicles SET mileage = -1000 WHERE vehicle_id = 8001;`  
+What does Consistency ensure in this scenario?
+
+A) The transaction will commit, and the CHECK constraint will be ignored.  
+B) The transaction will be rolled back due to the CHECK constraint violation.  
+C) The transaction will commit, and the mileage will be adjusted to 0.  
+D) The transaction will be paused until the mileage is corrected.
+
+---
+### Question 19
+ Transaction T1 updates a customer’s loyalty points:  
+- `UPDATE Customers SET points = points + 50 WHERE customer_id = 9001;`  
+Concurrently, Transaction T2 updates the same customer’s points:  
+- `UPDATE Customers SET points = points + 100 WHERE customer_id = 9001;`  
+The database uses optimistic concurrency control with the Read Committed isolation level. What does Isolation ensure?
+
+A) T2 will overwrite T1’s update, resulting in points = original + 100.  
+B) T2 will be blocked until T1 commits, then proceed with its update.  
+C) T2 will detect a conflict and roll back if T1 commits first.  
+D) T1 and T2 will both commit, leading to a lost update.
+
+---
+
+### Question 20
+ Transaction T1 updates a flight’s status:  
+- `UPDATE Flights SET status = 'Delayed' WHERE flight_id = 10001;`  
+Concurrently, Transaction T2 reads a range of flights, including flight 10001:  
+- `SELECT * FROM Flights WHERE status = 'On Time';`  
+The database uses the Serializable isolation level with strict two-phase locking (2PL). T2 runs the query before T1 commits. What does Isolation ensure?
+
+A) T2 will see flight 10001 with status ‘Delayed’.  
+B) T2 will see flight 10001 with its original status (‘On Time’).  
+C) T2 will be blocked until T1 commits or rolls back.  
+D) T2 will cause a phantom read.

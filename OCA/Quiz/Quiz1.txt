@@ -1,0 +1,507 @@
+1)	
+class T
+{
+private T(){
+ System.out.println("hello world");
+}
+public static void main(String args[])
+{
+   T t=new T();
+ }
+}
+
+a) prints nothing
+b) hello world
+c) compilation fails
+d) none of these
+
+
+
+
+
+
+Ans: b
+
+2)	
+class Demo
+  {
+	 String title;
+	 int value; 
+     public Demo() 
+	{
+             title += " class";
+             }
+     public Demo(int value) {
+             this.value = value;
+             title = "Demo";
+
+     }
+ } 
+class  Test {
+ public static void main (String args[]){
+ Demo d = new Demo(5);
+ System.out.println(d.title); 
+ }
+}
+
+A)	Demo class
+B)	Class Demo
+C)	Demo
+D)	Class
+E)	Compilation fails
+
+
+
+
+
+
+
+Ans: C
+
+
+
+3)	
+Which of the following are true? (Choose all that apply)
+ class Test
+ {
+	 public static void main(String[] args){
+		  short numPets = 5;          // line4
+		 int numGrains = 5.6;        //line5
+		 String name = "Scruffy"; //line6
+		 numPets.length();          //line7
+		numGrains.length();       //line8
+		name.length();               //line9
+	 }
+ }
+
+A. Line 4 generates a compiler error.
+B. Line 5 generates a compiler error.
+C. Line 6 generates a compiler error.
+D. Line 7 generates a compiler error.
+E. Line 8 generates a compiler error.
+F. Line 9 generates a compiler error.
+G. The code compiles as is.
+
+
+
+
+
+
+Ans: B,D ,E
+
+
+
+
+
+
+
+
+
+4)	
+Suppose we have a class named Test. Which of the following statements are true?
+(Choose all that apply)
+
+1: public class Test {
+2: public static void main(String[] args) {
+3: Test one = new Test();
+4: Test two = new Test();
+5: Test three = one;
+6: one = null;
+7: Test four = one;
+8: three = null;
+9: two = null;
+10: two = new Test();
+11: System.gc();
+12: } }
+
+A. The Test object from line 3 is first eligible for garbage collection immediately
+following line 6.
+
+B. The Test object from line 3 is first eligible for garbage collection immediately
+following line 8.
+
+C. The Test object from line 3 is first eligible for garbage collection immediately
+following line 12.
+
+D. The Test object from line 4 is first eligible for garbage collection immediately
+following line 9.
+
+E. The Test object from line 4 is first eligible for garbage collection immediately
+following line 11.
+
+F. The Test object from line 4 is first eligible for garbage collection immediately
+following line 12.
+
+
+
+
+Ans: B D
+
+
+
+
+5)	
+
+class Test
+{
+	int x;
+	int y;
+		public static void main(String[] args){
+		Test t=new Test();
+			t.y=10;
+     	System.out.println(t.x+t.y);
+
+	}
+}
+
+a)	0
+b)	10
+c)	Garbage value
+d)	Compilation fails
+e)	Run time exception
+
+
+
+
+
+
+Ans:  b
+
+
+
+
+
+6)	
+class Test
+{
+	public static void main(String[] args){
+	        int x=10;
+	        int y;
+		System.out.println(x+y);
+
+	}
+}
+
+a)	0
+b)	10
+c)	Garbage value
+d)	Compilation fails
+e)	Run time exception
+
+
+
+
+
+
+
+
+
+Ans: D
+
+
+
+
+
+
+
+
+
+7)	
+
+class Test
+{
+	public static void main(String[] args){
+			Test t=new Test();
+			System.out.print(1);
+	}
+	protected void finalize(){
+			System.out.println(" "+2);
+			}
+}
+
+a)	1 2
+b)	1
+c)	2
+d)	2 1
+e)	Compilation fails
+f)	Can’t predict the output
+
+
+
+
+
+
+
+Ans: F
+
+
+8)	
+What does the following code output?
+public class Test {
+ int count;
+  public void Test() {//line 3
+ count = 4; //line 4
+ }
+ public static void main(String[] args) {
+ Test s = new Test(); //line 7
+ System.out.println(s.count); //line 8
+ } }
+
+A. 0
+B. 4
+C. Compilation fails on line 3.
+D. Compilation fails on line 4.
+E. Compilation fails on line 7.
+F. Compilation fails on line 8.
+
+
+
+
+Ans: A
+
+9)	
+Which represent the order in which the following statements can be assembled into a program that will compile successfully? (Choose all that apply)
+
+A: class Rabbit {}
+B: import java.util.*;
+C: package animals;
+
+A. A, B, C
+B. B, C, A
+C. C, B, A
+D. B, A
+E. C, A
+F. A, C
+G. A, B
+
+
+
+
+
+
+Ans:  C
+
+
+
+10)	
+Which of the following legally fill in the blank so you can run the main() method from the
+command line? (Choose all that apply)
+class Test
+{
+	public static void main(--------------){}
+}
+
+A. String[] _names
+B. String[] 123
+C. String abc[]
+D. String _Names[]
+E. String... $n
+F. String names
+G. None of the above.
+
+
+
+Ans: A,C,D,E
+
+
+11)	
+class Test 
+{
+	public static void main(String[] args) 
+	{
+		short a=0;
+                           for(;a<10;a++)
+		  a=a+6;
+      		System.out.println(a);
+	          
+	 }
+}
+
+a)	0
+b)	14
+c)	Compilation fails
+d)	Run time exception
+
+Ans:  C
+
+12)	
+
+ class Test 
+{
+     public static void main(String[] args) 
+{
+String s;
+System.out.println(s);
+ }
+}
+a) null
+b) prints nothing
+c) compiles but will not run
+d) compilation fails
+
+Ans: d
+
+
+13)	
+class Test 
+{
+public static void main(String[] args)
+{
+    int a = 4;
+    double b = 8;
+
+    System.out.println(a+b+"KMIT " );
+	}
+}
+
+a) 12KMIT
+b) 12.0KMIT
+c) 48KMIT
+d) 48.0KMIT
+Ans: b
+
+
+14)	
+class Test 
+{
+	String s;
+     public static void main(String[] args) 
+	{
+	System.out.println(new Test().s);
+	}
+}
+a) null
+b) prints nothing
+c) compiles but will not run
+d) compilation fails
+
+Ans: A
+
+
+15)	
+ class Test{
+  public static void main(String[] args) {
+            byte a=3;
+	int b=10;
+	float c=100.1f;
+	byte d;
+	d=b+a;                                 //Line-7
+	b= (int)a;                             // Line-8
+	a+=7;                                   // Line-9
+     System.out.println(d);   	 //Line-10
+     System.out.println(b);  	// Line-11 
+    System.out.println(a);	               //Line-12
+	}
+ }
+
+
+a) Compilation fails at line 7
+b) Compilation fails at line 8
+c) Compilation fails at line 9
+d) Compilation fails at line 10
+e) Compilation fails at line 11
+f) Compilation fails at line 12
+g) Compilation succeeds
+
+Ans: A
+
+16)	
+class Test{
+   public static void main(String[] args) 
+	{
+	   float f=23.11f;
+	   short s=(short)f;
+	   System.out.println(s);
+	}
+}
+
+a) 0
+b) 23
+c) 23.0
+d) Compilation fails
+
+Ans:   b
+
+17)	
+class Test {
+public static void main(String [] args) {
+int year;                                 //Line-3 
+int day;                                  //Line-4
+year = 2050;                         //Line-5
+System.out.println(year);  //Line-6
+}
+}
+
+a) 2050
+b) 0
+c) Compilation fails at Line-3
+d) Compilation fails at Line-4
+e) Compilation fails at Line-5
+e) Run time exception
+
+
+Ans: a
+
+18)	
+class Test {
+public static void main(String [] args) {
+int x=1;
+if(x)
+        System.out.println("A");  
+else
+      System.out.println("B");  
+}
+}
+a)	A
+b)	B
+c)	Compilation fails
+d)	Run time exception
+
+Ans:  C
+
+19)
+class Test {
+    public static void main(String [] args) {
+		String x="abc";
+		switch(x){                                                        //Line-4
+			case "abc" :     			//Line-5
+			System.out.println("1");               //Line-6
+		case "def" :                                                     //Line-7
+		   System.out.println("2");                         //Line-8
+		}
+	}
+}
+
+a)	1
+b)	2
+c)	1
+2
+d)	Compilation fails Line-4
+e)	Compilation fails Line-5
+f)	Compilation fails Line-6
+g)	Compilation fails Line-7
+h)	Compilation fails Line-8
+
+Ans:  C
+
+
+20)
+
+class Test {
+    public static void main(String [] args) {
+          int a=10;
+	if(++a = 11)
+	 System.out.println(a);
+	else
+	 ++a;
+	 System.out.println(a);
+    }
+}
+
+a)	10
+b)	11
+c)	12
+d)	Compilation fails
+e)	Run time exception
+
+Ans:  D

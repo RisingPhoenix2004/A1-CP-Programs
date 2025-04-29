@@ -1,0 +1,464 @@
+1)
+
+class Test {
+	public static void main(String[] args) {
+     		 int a = 60;
+		 int b = 50;
+		 System.out.println(a&b);
+	}
+}
+
+a)	0
+b)	1
+c)	Compilation fails
+d)	None of these
+
+
+
+
+
+
+
+
+
+Ans :- d 
+
+Prints 48 
+
+
+2) class Test {
+	int x;
+   	public static void main(String[] args) 	{
+		Test t=new Test();
+		t.x=10;
+         	do{
+			System.out.println(t.x); 
+		}while(1);
+	}
+}
+
+a)	0
+b)	10
+c)	Infinite loop 
+d)	Compilation fails 
+e)	None of these
+
+
+
+
+
+
+
+
+Ans: D
+
+
+3) 
+class Test {
+	public static void main(String[] args) 	{
+	     	 int x=1;
+		 for (int y=3,x=2;x<3 ;x++ )   {
+		 	System.out.println(x);
+     		}
+	}
+}
+
+a) 1
+b) 2
+c) 3
+d) compilation fails
+e) none of these
+
+
+Ans: D
+
+
+4) 
+class Test {
+	public static void main(String[] args) {
+     		 int a = 60;
+		 int b = 50;
+		 System.out.println(  (a<b)?(a&b) : (a|b) );
+	}
+}
+
+a) 60
+b) 50
+c) 48
+d) 62
+e) compilation fails
+
+Ans: D
+
+
+5)
+What is the output of the following code snippet?
+
+
+class  Test{
+	public static void main(String[] args) 	{
+		int x = 4;
+        	long y = x * 4 - x++;
+     		if(y<10) System.out.println("Too Low");    //Line -5
+     		else System.out.println("Just right");      //line-6
+     		else System.out.println("Too High");       //line-7
+	}
+}
+A. Too Low
+B. Just Right
+C. Too High
+D. Compiles but throws a NullPointerException.
+E. The code will not compile because of line 6.
+F. The code will not compile because of line 7.
+
+
+
+
+
+
+
+
+Ans: F
+
+
+6)
+What is the output of the following code?
+ class Test { //line-1
+ public static void main(String[] args) { //line-2
+ 	int x = 5; //line-3
+ 	System.out.println(x > 2 ? x < 4 ? 10 : 8 : 7); //line-4
+ 	} //line-5
+} //line-6
+
+A. 5
+B. 4
+C. 10
+D. 8
+E. 7
+F. The code will not compile because of line 4
+
+
+
+
+
+
+
+
+
+
+
+Ans: D
+
+
+7)
+What is the output of the following code?
+  
+class Test {
+ public static void main(String[] args) {
+	boolean keepGoing = true;
+	int result = 15, i = 10;
+	do {
+		i--;
+		if(i==8) 
+			keepGoing = false;
+		result -= 2;
+	} while(keepGoing);
+	System.out.println(result);
+     }
+    }
+
+    a) 15
+    b) 13
+    c) 11
+    d) 9
+    e) infinite loop
+    f) compilation fails
+
+
+
+
+
+
+
+
+    Ans: C
+
+
+8)
+    //What is the output of the following code?
+ class Test {
+ public static void main(String[] args) {
+	int count = 0;
+	ROW_LOOP: for(int row = 1; row <=3; row++)
+		for(int col = 1; col <=2 ; col++) {
+			if(row * col % 2 == 0) continue ROW_LOOP;       //Line-6
+			count++;
+		}
+		System.out.println(count);
+     }
+ }
+
+A. 1
+B. 2
+C. 3
+D. 4
+E. 6
+F. The code will not compile because of line 6.
+
+
+
+
+
+
+
+Ans: B
+
+
+9)//What is the output of the following code?
+  class Test {
+ public static void main(String[] args) {
+	int count = 5;
+	switch(count){
+		default :  System.out.println(-1); break;
+		case 5:  System.out.println(1);    continue;
+		case 2:  System.out.println(2); break;
+	}
+	
+     }
+}
+
+    a) -1
+    b) 1
+       2
+   c) 1
+   d) prints 1 infinite times
+   e) compilation fails
+   f) none of these
+
+
+
+
+
+   Ans: E
+
+10)
+
+//What is the output of the following code?
+  class Test {
+ public static void main(String[] args) {
+		int count = 1;	
+		fs: if(count==1){
+			continue fs;
+		  System.out.println(1); 
+		}
+		else if(count==2)
+			System.out.println(2); 
+		else
+			break;
+     }
+}
+
+a) 1
+b) prints nothing
+c) prints 1 infinite times
+d) none of these
+
+
+
+
+
+
+
+Ans: D
+
+11)
+Given two files
+
+1. package pkgA;
+2. public class Foo {
+3. 	int a = 5;
+4. 	protected int b = 6;
+5. 	public int c = 7;
+6. }
+
+-----------------
+
+3. package pkgB;
+4. import pkgA.*;
+5. public class Baz {
+6. 	public static void main(String[] args){
+7. 		Foo f = new Foo();
+8.		System.out.print(" " + f.a);
+9.		System.out.print(" " + f.b);
+10. 		System.out.print(" " + f.c);
+11. 	}
+12. }
+
+
+What is the result? (Choose all that apply.)
+A. 5 6 7
+B. 5 followed by an exception
+C. Compilation fails with an error on line 7
+D. Compilation fails with an error on line 8
+E. Compilation fails with an error on line 9
+F. Compilation fails with an error on line 10
+
+Ans: D and E
+
+
+12)
+Given that a Date class exists in both the java.util and java.sql packages, what is the result of compiling the following class?
+1: import java.util.*;
+2: import java.sql.*;
+3: public class BirthdayManager {
+4: private Date rob = new Date();
+5: private java.util.Date sharon = new java.util.Date();
+6: }
+
+
+A. The code does not compile because of lines 1 and 2.
+B. The code does not compile because of line 4.
+C. The code does not compile because of line 5.
+D. The code compiles without issue.
+
+Ans: B
+
+13) How many of the following methods compile?
+public String convert(int value) {
+	return value.toString();
+}
+public String convert(Integer value) {
+	return value.toString();
+}
+public String convert(Object value) {
+	return value.toString();
+}
+
+A. None
+B. One
+C. Two
+D. Three
+
+Ans: C
+
+14) Which of the following does not compile?
+
+A. int num = 999;
+B. int num = 9_9_9;
+C. int num = _9_99;
+D. None of these; these all compile.
+
+
+Ans: C
+
+
+15) Which is the first line to trigger a compiler error?
+double d1 = 5f; // p1
+double d2 = 5.0; // p2
+float f1 = 5f; // p3
+float f2 = 5.0; // p4
+
+A. p1
+B. p2
+C. p3
+D. p4
+
+Ans: D
+
+16) Of the types double, int, and short, how many could fill in the blank to have this code output 0 ?
+public static void main(String[] args) {
+	_______defaultValue;
+	System.out.println(defaultValue);
+}
+
+A. None
+B. One
+C. Two
+D. Three
+
+
+
+
+
+
+Ans: A
+
+
+17) What is the output of the following?
+Integer integer = new Integer(4);
+System.out.print(integer.byteValue());
+System.out.print("-");
+int i = new Integer(4);
+System.out.print(i.byteValue());
+
+A. 4-0
+B. 4-4
+C. The code does not compile.
+D. The code compiles but throws an exception at runtime.
+
+Ans: C
+
+18) How many of the String objects are eligible for garbage collection right before the end
+of the main method?
+
+public static void main(String[] fruits) {
+	String fruit1 = new String("apple");
+	String fruit2 = new String("orange");
+	String fruit3 = new String("pear");
+	fruit3 = fruit1;
+	fruit2 = fruit3;
+	fruit1 = fruit2;
+}
+A. None
+B. One
+C. Two
+D. Three
+
+Ans: C
+
+19) What does the following output?
+1: public class InitOrder {
+2: public String first = "instance";
+3: public InitOrder() {
+4: first = "constructor";
+5: }
+6: { first = "block"; }
+7: public void print() {
+8: System.out.println(first);
+9: }
+10: public static void main(String... args) {
+11: new InitOrder().print();
+12: }
+13: }
+
+
+A. block
+B. constructor
+C. instance
+D. The code does not compile.
+
+Ans: B
+
+20) What is the output of the following?
+package beach;
+public class Sand {
+public Sand() {
+System.out.print("a");
+}
+public void Sand() {
+System.out.print("b");
+}
+public void run() {
+new Sand();
+Sand();
+}
+public static void main(String... args) {
+new Sand().run();
+}
+}
+A. a
+B. ab
+C. aab
+D. Compilation fails
+
+Ans: C
