@@ -36,3 +36,70 @@ Sample Input-2:
 Sample Output-2:
 ----------------
 11 */
+import java.util.*;
+
+class Node 
+{
+    public int data;
+    public Node left;
+    public Node right;
+    public Node(int value) 
+	{
+        data = value;
+        left = null;
+        right = null;
+    }
+}
+
+public class LCA 
+{
+    public static void main(String[] args) 
+	{
+        Scanner sc = new Scanner(System.in);
+        String[] arr= sc.nextLine().split(" ");
+        String[] persons = sc.nextLine().split(" ");
+        
+        int n=arr.length;
+        
+        List<Integer> v=new ArrayList<>();
+        for(int i=0;i<n;i++){
+            v.add(Integer.parseInt(arr[i]));
+        }
+        Node P1 = new Node(Integer.parseInt(persons[0]));
+        Node P2 = new Node(Integer.parseInt(persons[1]));
+        Queue<Node> q = new LinkedList<>();
+	    Node root=new Node(v.get(0));
+	    q.add(root);
+	    int i=1;
+	    while(!q.isEmpty()){
+	        Node curr=q.poll();
+	        if(i<v.size() && v.get(i)!=-1){
+	            curr.left=new Node(v.get(i));
+	            q.add(curr.left);
+	        }
+	        i++;
+	        if(i<v.size() && v.get(i)!=-1){
+	            curr.right=new Node(v.get(i));
+	            q.add(curr.right);
+	        }
+	        i++;
+	    }
+        Node res=new Solution().lowestCommonAscendant(root, P1, P2);
+        System.out.println(res.data);
+  }
+}
+
+class Solution 
+{
+    Node lowestCommonAscendant(Node root, Node P1, Node P2) {
+        if (root == null || root.data == P1.data || root.data == P2.data){
+            return root;
+        }
+        Node left = lowestCommonAscendant(root.left, P1, P2);
+        Node right = lowestCommonAscendant(root.right, P1, P2);
+        if (left != null && right != null){
+            return root;
+        }
+        return (left != null) ? left : right;
+    }
+}
