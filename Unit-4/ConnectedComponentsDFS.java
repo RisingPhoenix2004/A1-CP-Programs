@@ -45,7 +45,7 @@ Sample Output-2:
 ----------------
 1
   */
-  import java.util.*;
+import java.util.*;
 class ConnectedComponentsDFS {
     public void dfs(int i,List<List<Integer>> graph,boolean[] vis){
         vis[i]=true;

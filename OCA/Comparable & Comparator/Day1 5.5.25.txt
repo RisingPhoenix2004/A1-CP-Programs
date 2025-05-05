@@ -1,0 +1,29 @@
+Comparable and Comparator:
+- 
+
+Code:
+
+class Test{
+    int val;
+    Test( int value){
+        val = value;
+    }
+    public static void main(String... args){
+        Test t1 = new Test();
+        Test t2 = new Test();
+        Test t3 = new Test();
+        Test t4 = new Test();
+        Test t [] = new Test[5];
+        for(int i = 0; i <t.length; i++) {
+            t[i] = new Test(i*7);
+        }
+        System.out.println("Before Sorting:", + t);
+        Arrays.sort(t);
+        System.out.println("After Sorting:", + t);
+        System.out.println(t);
+    }
+}
+Every object has default way of comparision -> Comparable defines int
+Comparator -> Defines The custom compare logic 
+There is Account class
+Implement a Custom Comparable that will sort on Account Balance, write 4 different comapratrors -> time, date, acc number, acc opening data
