@@ -1,0 +1,86 @@
+JDBC
+
+Before JDBC -> Open Database Connectivity (ODBC) , which was supported by every database
+
+JDBC - ODBC bridge / driver: Converting JDBC (java code ) calls to ODBC & vice versa , (almost every database supported this) 
+ 
+
+RDBMS created thin driver , which removes the ODBC layer , where now we can connect to RDBMS using the JDBC driver 
+
+-> Increased performance 
+-> Other benefits :)
+
+JDBC Interfaces : 
+
+The java code which we write , Should always be written independent of the database 
+
+To facilitate this , java provides us with interfaces like connection , driver manager , statement, result set 
+
+Each RDBMS provides us with their own JAR file -> which contains code related to the implementation of these interfaces
+
+Driver: Knows how to get a connection to the database
+Connection: Knows how to communicate with the database
+Statement: Knows how to run the SQL
+ResultSet: Knows what was returned by a SELECT query 
+
+
+jar -h : the command to show all the jar applicable command 
+
+
+Java code to establish connection : 
+
+static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver"; 
+static final String DB_URL = "jdbc:mysql://localhost: 3306/test";
+
+
+A result set has a header , which always points to the beginning ( the first record fetched ) 
+
+where it has an iterator , using resultset.next() , which moves the pointer through all the records fetched. 
+
+The retrieval of data are done using getters of various datatypes 
+
+You can't use executeQuery for update / delete / insert . 
+ExecuteUpdate , used for modifying data ,  returns the number of rows affected
+
+
+
+javac jdbcl.java
+java -cp "mysql-connector-j-8.0.32.jar ;. " jdbcl 
+
+we run using the jar file ,  where -cp is the class path , which points to the class of the sql jar file (jdbc driver) , "." is for the current path
+
+
+Statements in JDBC :
+we have simeple statements and callable statements
+
+
+ResultSets :
+we have various options , scrollable sensitive : everytime when we say .next() , we can see latest data from the database   
+& insensitive : when the query was executed , fetching the data  ;
+
+ forward_only , etc
+
+
+
+Few options are disabled for specific databases , hence sometimes dont work (not the issue of your code) 
+
+
+
+ResultSet Type	 Can Read Data 			Can Update Data		Supported by All Drivers
+
+
+
+
+ResultSet. CONCUR_	Yes			No			Yes
+
+
+READ_ONLY
+
+ResultSet. CONCUR	Yes			Yes 			No
+
+UPDATABLE
+
+
+We use Excecute , (which returns a Boolean) , if we run a select query successfully , we get a Boolean true , when we get Boolean false , we check for the updatecount 
+
+
