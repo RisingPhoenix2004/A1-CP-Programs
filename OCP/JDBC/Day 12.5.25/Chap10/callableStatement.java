@@ -8,7 +8,7 @@ class callableStatement {
   static final String DB_URL = "jdbc:mysql://localhost/test";
     
   static final String USER = "root";
-  static final String PASS = "root";
+  static final String PASS = "none";
      
   public static void main(String[] args) throws SQLException {  
     Connection conn = null;
