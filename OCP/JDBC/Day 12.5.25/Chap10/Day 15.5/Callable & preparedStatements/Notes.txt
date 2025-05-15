@@ -1,0 +1,67 @@
+In JDBC, `ResultSetMetaData` and `DatabaseMetaData` are interfaces that provide information about the database and its results.
+
+### `ResultSetMetaData`
+
+**Purpose:**
+`ResultSetMetaData` provides information about the columns of a `ResultSet` object. When you execute a query and get a `ResultSet`, you can use `ResultSetMetaData` to find out details about the columns in that result, such as the number of columns, their names, data types, and properties.
+
+**How to get it:**
+You obtain a `ResultSetMetaData` object by calling the `getMetaData()` method on a `ResultSet` object.
+```java
+// ...existing code...
+// filepath: c:\Users\Harsha\Desktop\KMIT\A1-CP-Programs\OCP\JDBC\Day 12.5.25\Chap10\Day 15.5\Callable & preparedStatements\resultSetMetadata1.java
+      ResultSetMetaData rsmd = rs.getMetaData();
+// ...existing code...
+```
+
+**Commonly used methods:**
+*   `int getColumnCount()`: Returns the number of columns in the `ResultSet`.
+*   `String getColumnName(int column)`: Returns the name of the specified column.
+*   `String getColumnTypeName(int column)`: Returns the database-specific type name for the specified column.
+*   `int getColumnType(int column)`: Returns the SQL type for the specified column (from `java.sql.Types`).
+*   `String getColumnLabel(int column)`: Returns the suggested title for the column for use in printouts and displays.
+*   `int getPrecision(int column)`: Gets the specified column's designated column size.
+*   `int getScale(int column)`: Gets the specified column's number of digits to right of the decimal point.
+*   `boolean isNullable(int column)`: Indicates the nullability of values in the specified column.
+
+**Use Cases:**
+*   Dynamically processing `ResultSet` objects when you don't know the column structure beforehand.
+*   Generating generic display or reporting tools for database query results.
+*   Validating the structure of query results.
+
+### `DatabaseMetaData`
+
+**Purpose:**
+`DatabaseMetaData` provides comprehensive information about the database as a whole. This includes information about the database system (e.g., product name, version), supported features, tables, schemas, stored procedures, and more.
+
+**How to get it:**
+You obtain a `DatabaseMetaData` object by calling the `getMetaData()` method on a `Connection` object.
+```java
+// ...
+Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+DatabaseMetaData dbmd = conn.getMetaData();
+// ...
+```
+
+**Commonly used methods:**
+*   `String getDatabaseProductName()`: Retrieves the name of this database product.
+*   `String getDatabaseProductVersion()`: Retrieves the version number of this database product.
+*   `String getDriverName()`: Retrieves the name of this JDBC driver.
+*   `String getDriverVersion()`: Retrieves the version number of this JDBC driver.
+*   `ResultSet getTables(String catalog, String schemaPattern, String tableNamePattern, String[] types)`: Retrieves a description of the tables available in the given catalog.
+*   `ResultSet getColumns(String catalog, String schemaPattern, String tableNamePattern, String columnNamePattern)`: Retrieves a description of table columns available in the specified catalog.
+*   `ResultSet getPrimaryKeys(String catalog, String schema, String table)`: Retrieves a description of the given table's primary key columns.
+*   `ResultSet getProcedures(String catalog, String schemaPattern, String procedureNamePattern)`: Retrieves a description of the stored procedures available in the given catalog.
+*   `boolean supportsBatchUpdates()`: Retrieves whether this database supports batch updates.
+*   `boolean supportsTransactions()`: Retrieves whether this database supports transactions.
+
+**Use Cases:**
+*   Writing database-agnostic applications that can adapt to different database systems.
+*   Database exploration tools or administration utilities.
+*   Checking for specific database features or capabilities before using them.
+*   Dynamically generating SQL queries based on database schema.
+
+**In summary:**
+
+*   **`ResultSetMetaData`**: Provides information about the *columns* of a specific query's result.
+*   **`DatabaseMetaData`**: Provides information about the *entire database system* and its structure.
