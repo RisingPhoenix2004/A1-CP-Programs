@@ -1,2 +1,20 @@
-SpringBoot Basics/
+# Except these directories and their src folders
+!demo/
+!EMS/
+!RESTAPI/
+
+# Ignore everything inside them
+demo/*
+EMS/*
+RESTAPI/*
+
+# But allow src folders inside them
+!demo/src/
+!EMS/src/
+!RESTAPI/src/
+
+# Allow contents of src folders
+!demo/src/**
+!EMS/src/**
+!RESTAPI/src/**
 .vscode/

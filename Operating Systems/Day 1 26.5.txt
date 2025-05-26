@@ -1,0 +1,134 @@
+Unix Operating Systems:
+- Unix
+touch:
+- creates new if not existing else updates timestamp
+
+
+What happens we compile a c program ?
+- 
+JDK -> Platform dependent
+JVM -> Platform independent
+
+Difference between ">>" and ">"
+- ">" overwrites the destination file (destructive)
+- ">>" appends to the destination file (non-destructive)
+- Both create new file if destination doesn't exist
+
+Device Driver
+- A device driver is a special software program that acts as an interface between hardware devices and the operating system.
+
+chmod:
+- The chmod command is used to change the permissions of files or directories in Unix/Linux systems.
+- Permissions can be set using symbolic (e.g., u+x) or numeric (e.g., 755) modes.
+- Example: chmod 755 filename
+
+chown:
+- The chown command changes the ownership of files or directories.
+- It can change both the user and group ownership.
+- Example: chown user:group filename
+
+grep:
+- Command for searching text patterns in files
+- Basic syntax: grep [options] pattern [files]
+- Common options:
+  * -i: ignore case
+  * -r: recursive search
+  * -n: show line numbers
+  * -v: invert match
+  * -w: whole words only
+
+grep in java:
+
+import java.io.*;
+import java.util.regex.*;
+
+public class SimpleGrep {
+    public static void search(String pattern, String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            Pattern regexPattern = Pattern.compile(pattern);
+            String line;
+            int lineNumber = 0;
+
+            while ((line = reader.readLine()) != null) {
+                lineNumber++;
+                Matcher matcher = regexPattern.matcher(line);
+                if (matcher.find()) {
+                    System.out.printf("%d:%s%n", lineNumber, line);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
+    }
+
+    public static void main(String[] args) {
+        if (args.length != 2) {
+            System.out.println("Usage: java SimpleGrep pattern filename");
+            System.exit(1);
+        }
+
+        String pattern = args[0];
+        String filename = args[1];
+        search(pattern, filename);
+    }
+}
+
+diff:
+
+### diff Command
+
+The `diff` command compares files line by line and shows the differences between them.
+
+#### Basic Syntax:
+```bash
+diff [options] file1 file2
+```
+
+#### Common Options:
+- `-b`: Ignore changes in white space
+- `-w`: Ignore all white space
+- `-i`: Ignore case differences
+- `-c`: Show context (3 lines by default)
+- `-u`: Unified format (more readable)
+
+#### Example Usage:
+```bash
+diff file1.txt file2.txt        # Basic comparison
+diff -u file1.txt file2.txt     # Unified format
+diff -w file1.txt file2.txt     # Ignore whitespace
+```
+
+#### Output Symbols:
+- `a`: Add
+- `d`: Delete
+- `c`: Change
+- `<`: Content from first file
+- `>`: Content from second file
+
+Here's a Java implementation of a simple diff utility:
+
+import java.io.*;
+import java.util.*;
+
+public class SimpleDiff {
+    public static void compareFiles(String file1, String file2) {
+        try {
+            List<String> lines1 = Files.readAllLines(Paths.get(file1));
+            List<String> lines2 = Files.readAllLines(Paths.get(file2));
+            
+            for (int i = 0; i < Math.max(lines1.size(), lines2.size()); i++) {
+                String line1 = i < lines1.size() ? lines1.get(i) : null;
+                String line2 = i < lines2.size() ? lines2.get(i) : null;
+                
+                if (!Objects.equals(line1, line2)) {
+                    System.out.printf("Line %d:%n", i + 1);
+                    System.out.printf("< %s%n", line1 != null ? line1 : "EOF");
+                    System.out.printf("> %s%n", line2 != null ? line2 : "EOF");
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading files: " + e.getMessage());
+        }
+    }
+}
+
