@@ -1,57 +1,60 @@
-# Except these directories and their src folders
+# Ignore everything by default
+*
+
+# Allow only these project directories
 !demo/
 !EMS/
 !RESTAPI/
 
-# Ignore everything inside them
+# Ignore all contents inside them
 demo/*
 EMS/*
 RESTAPI/*
 
-# But allow src folders inside them
-!demo/src/
-!EMS/src/
-!RESTAPI/src/
-
-# Allow contents of src folders
+# Allow only src folders and their contents
+!demo/src/main/
+!EMS/src/main/
+!RESTAPI/src/main/
 !demo/src/**
 !EMS/src/**
 !RESTAPI/src/**
-.vscode/
-HELP.md
-.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### STS ###
+# Ignore VSCode and IDE configs
+.vscode/
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Ignore build artifacts
+.gradle/
+build/
+out/
+bin/
+
+# Allow gradle wrapper
+!gradle/wrapper/gradle-wrapper.jar
+
+# Allow build/bin/out inside src only (in case it's generated there)
+!**/src/**/build/
+!**/src/**/bin/
+!**/src/**/out/
+
+# Ignore Eclipse/STS metadata
 .apt_generated
 .classpath
 .factorypath
 .project
-.settings
+.settings/
 .springBeans
 .sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
 
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-
-### NetBeans ###
+# Ignore NetBeans-specific files
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
-.vscode/
+# Additional common ignores
+HELP.md
