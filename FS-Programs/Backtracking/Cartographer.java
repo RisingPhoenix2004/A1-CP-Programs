@@ -42,66 +42,86 @@ The binary tree has five leaf-to-root paths:
 
  */
 import java.util.*;
-class TreeNode {
-    int val;
-    TreeNode left, right;
 
-    TreeNode(int x) {
-        val = x;
+class Main {
+    public static void main(String[] args) {
+        // 1) Read a single line of space-separated integers (level-order, with -1 as null)
+        Scanner sc = new Scanner(System.in);
+        String line = sc.nextLine();
+        sc.close();
+
+        List<Integer> levelOrder = new ArrayList<>();
+        for (String token : line.trim().split("\\s+")) {
+            levelOrder.add(Integer.parseInt(token));
+        }
+
+        // 2) Delegate to Cartographer to build the tree and compute paths
+        Set<List<Integer>> paths = Cartographer.chartFrontierToRootPaths(levelOrder);
+
+        // 3) Print the result set
+        System.out.println(paths);
     }
 }
-public class Cartographer {
-    public static TreeNode buildTree(List<Integer> levelOrder) {
-        if (levelOrder == null || levelOrder.isEmpty() || levelOrder.get(0) == -1) return null;
-        TreeNode root = new TreeNode(levelOrder.get(0));
-        Queue<TreeNode> queue = new LinkedList<>();
-        queue.offer(root);
-        int i = 1;
-        while (i < levelOrder.size()) {
-            TreeNode current = queue.poll();
+class Cartographer {
 
-            if (i < levelOrder.size() && levelOrder.get(i) != -1) {
-                current.left = new TreeNode(levelOrder.get(i));
-                queue.offer(current.left);
+    // Definition of a realm node (binary tree node)
+    static class Node {
+        int id;
+        Node north, south;
+        Node(int id) { this.id = id; }
+    }
+    
+    public static Set<List<Integer>> chartFrontierToRootPaths(List<Integer> levelOrder) {
+        Node root = buildTreeFromLevelOrder(levelOrder);
+        Set<List<Integer>> paths = new HashSet<>();
+        backtrack(root, new ArrayList<>(), paths);
+        return paths;
+    }
+
+    // Builds the binary tree from its level-order serialization.
+    private static Node buildTreeFromLevelOrder(List<Integer> vals) {
+        if (vals.isEmpty() || vals.get(0) == -1) {
+            return null;
+        }
+        Node root = new Node(vals.get(0));
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(root);
+
+        int i = 1, n = vals.size();
+        while (!queue.isEmpty() && i < n) {
+            Node curr = queue.poll();
+            // northern (left) child
+            if (i < n && vals.get(i) != -1) {
+                curr.north = new Node(vals.get(i));
+                queue.add(curr.north);
             }
             i++;
-
-            if (i < levelOrder.size() && levelOrder.get(i) != -1) {
-                current.right = new TreeNode(levelOrder.get(i));
-                queue.offer(current.right);
+            // southern (right) child
+            if (i < n && vals.get(i) != -1) {
+                curr.south = new Node(vals.get(i));
+                queue.add(curr.south);
             }
             i++;
         }
-
         return root;
     }
-    public static List<List<Integer>> frontierToRootPaths(TreeNode root) {
-        List<List<Integer>> result = new ArrayList<>();
-        List<Integer> path = new ArrayList<>();
-        dfs(root, path, result);
-        return result;
-    }
-    private static void dfs(TreeNode node, List<Integer> path, List<List<Integer>> result) {
+
+    // Backtracking DFS: accumulate root→leaf, then record reversed path (leaf→root)
+    private static void backtrack(Node node, List<Integer> current, Set<List<Integer>> paths) {
         if (node == null) return;
-        path.add(node.val);
-        if (node.left == null && node.right == null) {
-            List<Integer> leafToRoot = new ArrayList<>(path);
-            Collections.reverse(leafToRoot);
-            result.add(leafToRoot);
+
+        current.add(node.id);
+
+        // If leaf node (no children)
+        if (node.north == null && node.south == null) {
+            List<Integer> path = new ArrayList<>(current);
+            Collections.reverse(path); // Convert to leaf-to-root
+            paths.add(path);
+        } else {
+            backtrack(node.north, current, paths);
+            backtrack(node.south, current, paths);
         }
-        dfs(node.left, path, result);
-        dfs(node.right, path, result);
-        path.remove(path.size() - 1); 
-    }
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String[] parts = sc.nextLine().split(" ");
-        List<Integer> input = new ArrayList<>();
-        for (String part : parts) {
-            input.add(Integer.parseInt(part));
-        }
-        TreeNode root = buildTree(input);
-        List<List<Integer>> paths = frontierToRootPaths(root);
-        System.out.println(paths);
+
+        current.remove(current.size() - 1); // Backtrack
     }
 }
