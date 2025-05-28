@@ -1,0 +1,179 @@
+Software Maintainence
+-> No wear due to wear and tear
+
+Due u perefer Loosely coupled code or Tightly coupled Code:
+- Loosely Coupled as change in one module doesnt change many modules
+
+Good Design & Good Code:
+- Loose Coupling & High Cohesiveness
+- Modules must be independent to each other with minimal connection between each other
+- Classes must have "is a" and "has a" relation
+
+Cohesiveness:
+- Cohesion in design patterns refers to how closely related and focused the responsibilities of a single module, class, or component are.
+
+High Cohesion:
+- Each module or class has a clear, well-defined responsibility. This makes the code easier to understand, maintain, and reuse.
+
+Low Cohesion:
+- A module or class does many unrelated things, making it harder to maintain and more error-prone.
+
+Coupling:
+- Coupling refers to the degree of direct knowledge that one module or class has about another. It measures how closely connected different modules or components are in a system.
+
+Loose Coupling:
+- Modules are independent and interact through well-defined interfaces. Changes in one module have minimal impact on others. This is preferred for maintainability and flexibility.
+
+Tight Coupling:
+- Modules are highly dependent on each other. Changes in one module can require changes in others, making the system harder to maintain and extend.
+
+"virtual" keyword == abstract in c++
+
+In C++, the virtual keyword and the vtable are used to support runtime polymorphism (dynamic method dispatch).
+
+virtual keyword
+Used to declare a function as virtual in a base class.
+Allows derived classes to override the function.
+When you call a virtual function through a base class pointer/reference, the actual function called is determined at runtime.
+Example:
+
+class Base {
+public:
+    virtual void show() { cout << "Base"; }
+};
+
+class Derived : public Base {
+public:
+    void show() override { cout << "Derived"; }
+};
+
+Base* b = new Derived();
+b->show(); // Output: Derived
+
+vtable (Virtual Table)
+A hidden table created by the compiler for classes with virtual functions.
+Stores pointers to the virtual functions of the class.
+Each object of a class with virtual functions contains a hidden pointer to the vtable (called vptr).
+At runtime, the vtable is used to resolve which function to call.
+
+Pure Virtual -> Non abstract method for polymorphism
+Virtual -> Abstract
+
+The selection of virtual function is delayed to runtime based on reference object
+If not virtual -> then based on object's type
+
+Design Pattern:
+Design Patterns:
+- Design patterns are typical solutions to common problems in software design.
+- They are best practices that help structure code for flexibility, reusability, and maintainability.
+- Patterns are not code, but templates or blueprints for solving problems.
+
+Types of Design Patterns:
+1. Creational Patterns: Deal with object creation (e.g., Singleton, Factory, Builder).
+2. Structural Patterns: Deal with object composition (e.g., Adapter, Decorator, Composite).
+3. Behavioral Patterns: Deal with object interaction and responsibility (e.g., Observer, Strategy, Command).
+
+Benefits:
+- Promote code reuse and best practices.
+- Make code easier to understand and maintain.
+- Help in designing loosely coupled and highly cohesive systems.
+
+Example:
+- Singleton Pattern ensures a class has only one instance and provides a global point of access to it.
+- Observer Pattern allows objects to be notified of changes in other objects.
+
+Immutable Class in Java:
+public final class ImmutableExample {
+    private final String name;
+    private final int age;
+
+    public ImmutableExample(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+The class is final (cannot be subclassed).
+All fields are private and final.
+No setters are provided.
+Only getters are provided to access field values
+Have a Parameterized Constructor
+
+Singleton Pattern:
+
+public final class SingletonExample {
+    private static SingletonExample instance;
+
+    // Private constructor prevents instantiation from other classes
+    private SingletonExample() {}
+
+    // Public method to provide access to the single instance
+    public static SingletonExample getInstance() {
+        if (instance == null) {
+            instance = new SingletonExample();
+        }
+        return instance;
+    }
+}
+Private constructor prevents direct object creation.
+Static variable holds the single instance.
+Public static method returns the single instance (creates it if it doesn’t exist)
+
+Difference between interface default and static ?
+Static methods cannot be overridden in class
+Default can be overriden in class
+
+is a -> inheritance
+- Used when one class is a type of another class.
+- Example: Dog is a Animal (Dog inherits from Animal).
+
+has a -> generalization / aggregation / composition
+- Used when one class contains or uses another class.
+- Example: Car has a Engine (Car contains an Engine object).
+
+Note:
+- "is a" represents inheritance (extends/implements).
+- "has a" represents composition or aggregation (using objects as fields).
+
+Difference between private and static methods in an interface (Java):
+
+- private methods:
+  - Introduced in Java 9.
+  - Used to share common code between default methods within the interface.
+  - Cannot be accessed outside the interface (not visible to implementing classes).
+  - Cannot be overridden.
+
+- static methods:
+  - Introduced in Java 8.
+  - Belong to the interface, not to instances.
+  - Can be called using the interface name.
+  - Cannot be overridden by implementing classes.
+  - Can be accessed outside the interface.
+
+Summary:
+- Private methods are for internal code reuse within the interface.
+- Static methods are utility methods accessible via the interface name.
+
+Functional Interface:
+
+- An interface with exactly one abstract method is called a functional interface.
+- Can have any number of default or static methods.
+- Used primarily for lambda expressions and method references in Java.
+- Annotated with @FunctionalInterface (optional, but helps catch errors).
+
+Example:
+@FunctionalInterface
+interface MyFunction {
+    void execute();
+}
+
+Usage:
+MyFunction f = () -> System.out.println("Hello");
+f.execute(); // Output: Hello

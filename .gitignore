@@ -1,5 +1,5 @@
 # Ignore everything by default
-*
+
 
 # Allow only these project directories
 !demo/

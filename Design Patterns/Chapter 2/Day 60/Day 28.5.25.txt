@@ -1,0 +1,160 @@
+is a -> Inheritance
+has a -> composition
+
+English Paragraph to determine the is a and has a relation attributes and params:
+
+A car is a vehicle that has an engine, wheels, and a fuel tank. An electric car is a type of car that has a battery instead of a fuel tank.
+
+🔍 Analysis:
+Classes (Entities):
+Vehicle
+
+Car
+
+ElectricCar
+
+Engine
+
+Wheel
+
+FuelTank
+
+Battery
+
+Is-a Relationships:
+Car is-a Vehicle
+
+ElectricCar is-a Car
+
+Has-a Relationships (Attributes):
+Car has-a Engine
+
+Car has-a Wheel
+
+Car has-a FuelTank
+
+ElectricCar has-a Battery
+
+Attributes / Params (primitive or object-type fields):
+Car:
+
+engine: Engine
+
+wheels: List<Wheel>
+
+fuelTank: FuelTank
+
+ElectricCar:
+
+battery: Battery (replaces fuelTank)
+
+
+What benefits do we get using Collections API ?
+
+"Program to an interface, not an implementation" means you should write code that depends on abstract types (interfaces) rather than concrete classes. 
+This increases flexibility and makes your code easier to extend or modify.
+Gives Loose Coupling
+Example in Java:
+
+interface Animal {
+    void makeSound();
+}
+
+class Dog implements Animal {
+    public void makeSound() {
+        System.out.println("Woof");
+    }
+}
+
+class Cat implements Animal {
+    public void makeSound() {
+        System.out.println("Meow");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Dog(); // Program to the interface, not Dog directly
+        a.makeSound(); // Output: Woof
+
+        a = new Cat();
+        a.makeSound(); // Output: Meow
+    }
+}
+
+Benefits:
+- Code is more flexible and easier to maintain.
+- You can change implementations without changing the code that uses them.
+- Supports loose coupling and easier testing.
+
+
+"Favour Composition Over Inheritance"
+
+Three types of Design Patterns:
+
+Singleton Pattern:
+To ensure only one instance is present
+
+Design Pattern:
+Design Patterns:
+- Design patterns are typical solutions to common problems in software design.
+- They are best practices that help structure code for flexibility, reusability, and maintainability.
+- Patterns are not code, but templates or blueprints for solving problems.
+
+Types of Design Patterns:
+1. Creational Patterns: Deal with object creation (e.g., Singleton, Factory, Builder).
+2. Structural Patterns: Deal with object composition (e.g., Adapter, Decorator, Composite).
+3. Behavioral Patterns: Deal with object interaction and responsibility (e.g., Observer, Strategy, Command).
+
+Benefits:
+- Promote code reuse and best practices.
+- Make code easier to understand and maintain.
+- Help in designing loosely coupled and highly cohesive systems.
+
+Example:
+- Singleton Pattern ensures a class has only one instance and provides a global point of access to it.
+- Observer Pattern allows objects to be notified of changes in other objects.
+
+Immutable Class in Java:
+public final class ImmutableExample {
+    private final String name;
+    private final int age;
+
+    public ImmutableExample(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+The class is final (cannot be subclassed).
+All fields are private and final.
+No setters are provided.
+Only getters are provided to access field values
+Have a Parameterized Constructor
+
+Singleton Pattern:
+
+public final class SingletonExample {
+    private static SingletonExample instance;
+
+    // Private constructor prevents instantiation from other classes
+    private SingletonExample() {}
+
+    // Public method to provide access to the single instance
+    public static SingletonExample getInstance() {
+        if (instance == null) {
+            instance = new SingletonExample();
+        }
+        return instance;
+    }
+}
+Private constructor prevents direct object creation.
+Static variable holds the single instance.
+Public static method returns the single instance (creates it if it doesn’t exist)
