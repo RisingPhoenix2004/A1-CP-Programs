@@ -1,0 +1,34 @@
+Creational Design Patterns:
+
+Creational Design Patterns:
+
+These are design patterns that deal with object creation mechanisms. They abstract the instantiation process, making it more flexible and dynamic. Instead of creating objects directly using the `new` keyword, creational patterns provide ways to create objects in a manner suitable to the situation.
+
+Common creational design patterns include:
+- Singleton: Ensures only one instance of a class exists.
+- Factory Method: Defines an interface for creating objects, but lets subclasses decide which class to instantiate.
+- Abstract Factory: Provides an interface to create families of related objects without specifying their concrete classes.
+- Builder: Separates the construction of a complex object from its representation, allowing the same construction process to create different representations.
+- Prototype: Creates new objects by copying an existing object (the prototype).
+
+These patterns help make a system independent of how its objects are created, composed, and represented.
+
+
+Factory Pattern and Abstract Factory Pattern:
+
+Factory Pattern:
+- The Factory Pattern defines an interface for creating objects, but lets subclasses decide which class to instantiate.
+- It allows a class to defer instantiation to subclasses.
+- This pattern is useful when the exact type of object to create is not known until runtime.
+- Example: A ShapeFactory class that returns different shapes (Circle, Square) based on input.
+- Cannot anticipate class of objects it creates
+Abstract Factory Pattern:
+- The Abstract Factory Pattern provides an interface for creating families of related or dependent objects without specifying their concrete classes.
+- It is useful when a system needs to be independent of how its objects are created and represented.
+- This pattern involves multiple factories, each creating a set of related objects.
+- Example: A GUIFactory that can create related UI components like Buttons and Checkboxes for different operating systems (Windows, Mac).
+
+Summary:
+- Factory Pattern creates one product at a time, letting subclasses decide which product to create.
+- Abstract Factory Pattern creates families of related products, ensuring they are compatible with each other.
+
