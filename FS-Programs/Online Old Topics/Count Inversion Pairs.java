@@ -58,43 +58,43 @@
  * -> Input array may be partially or completely unsorted
  * -> Time complexity should be O(n log n)
  */
-import java.util.*;
+    import java.util.*;
 
-public class Main {
-    public static int countInversions(int[] arr) {
-        return mergeSort(arr, 0, arr.length - 1);
-    }
-    private static int mergeSort(int[] arr, int left, int right) {
-        int count = 0;
-        if (left < right) {
-            int mid = (left + right) / 2;
-            count += mergeSort(arr, left, mid);
-            count += mergeSort(arr, mid + 1, right);
-            count += merge(arr, left, mid, right);
+    public class Main {
+        public static int countInversions(int[] arr) {
+            return mergeSort(arr, 0, arr.length - 1);
         }
-        return count;
-    }
-    private static int merge(int[] arr, int left, int mid, int right) {
-        int[] leftArr = Arrays.copyOfRange(arr, left, mid + 1);
-        int[] rightArr = Arrays.copyOfRange(arr, mid + 1, right + 1);
-        int i = 0, j = 0, k = left, count = 0, n = leftArr.length, m = rightArr.length;
-        while (i < n && j < m) {
-            if (leftArr[i] <= rightArr[j]) {
-                arr[k++] = leftArr[i++];
-            } else {
-                arr[k++] = rightArr[j++];
-                count += (n - i); 
+        private static int mergeSort(int[] arr, int left, int right) {
+            int count = 0;
+            if (left < right) {
+                int mid = (left + right) / 2;
+                count += mergeSort(arr, left, mid);
+                count += mergeSort(arr, mid + 1, right);
+                count += merge(arr, left, mid, right);
             }
+            return count;
         }
-        while (i < n) arr[k++] = leftArr[i++];
-        while (j < m) arr[k++] = rightArr[j++];
-        return count;
+        private static int merge(int[] arr, int left, int mid, int right) {
+            int[] leftArr = Arrays.copyOfRange(arr, left, mid + 1);
+            int[] rightArr = Arrays.copyOfRange(arr, mid + 1, right + 1);
+            int i = 0, j = 0, k = left, count = 0, n = leftArr.length, m = rightArr.length;
+            while (i < n && j < m) {
+                if (leftArr[i] <= rightArr[j]) {
+                    arr[k++] = leftArr[i++];
+                } else {
+                    arr[k++] = rightArr[j++];
+                    count += (n - i); 
+                }
+            }
+            while (i < n) arr[k++] = leftArr[i++];
+            while (j < m) arr[k++] = rightArr[j++];
+            return count;
+        }
+        public static void main(String... args) {
+            Scanner sc = new Scanner(System.in);
+            int n = sc.nextInt();
+            int[] arr = new int[n];
+            for (int i = 0; i < n; i++) arr[i] = sc.nextInt();
+            System.out.println(countInversions(arr));
+        }
     }
-    public static void main(String... args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int[] arr = new int[n];
-        for (int i = 0; i < n; i++) arr[i] = sc.nextInt();
-        System.out.println(countInversions(arr));
-    }
-}
