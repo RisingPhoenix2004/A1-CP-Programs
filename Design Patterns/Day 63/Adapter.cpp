@@ -13,6 +13,7 @@ interface AdvancedMediaPlayer
 {	
   virtual void playVlc(char * fileName) = 0;
   virtual void playMp4(char * fileName) = 0;
+  virtual void playAvi(char * fileName) = 0;
 };
 
 class VlcPlayer : public AdvancedMediaPlayer 
@@ -23,6 +24,10 @@ class VlcPlayer : public AdvancedMediaPlayer
       cout << "Playing vlc file. Name: " << fileName << endl;
     }
     void playMp4(char * fileName) 
+    {
+      //do nothing
+    }
+	void playAvi(char * fileName) 
     {
       //do nothing
     }
@@ -38,6 +43,27 @@ class Mp4Player : public AdvancedMediaPlayer
     void playMp4(char * fileName) 
     {
       cout << "Playing mp4 file. Name: " << fileName << endl;	
+    }
+	void playAvi(char * fileName) 
+    {
+      //do nothing
+    }
+};
+
+class AviPlayer : public AdvancedMediaPlayer 
+{
+  public:
+    void playAvi(char * fileName) 
+    {
+      cout << "Playing avi file. Name: " << fileName << endl;
+    }
+    void playMp4(char * fileName) 
+    {
+      //do nothing
+    }
+	void playVlc(char * fileName) 
+    {
+      //do nothing
     }
 };
 
@@ -55,7 +81,11 @@ class MediaAdapter : public MediaPlayer
       else if(stricmp(audioType, "mp4") == 0)
       {
         advancedMusicPlayer = new Mp4Player();
-      }	
+      }
+	  else if(stricmp(audioType, "avi") == 0)
+      {
+        advancedMusicPlayer = new AviPlayer();
+      }
     }
 
     void play(char * audioType, char * fileName)
@@ -67,6 +97,10 @@ class MediaAdapter : public MediaPlayer
       else if(stricmp(audioType, "mp4") == 0)
       {
          advancedMusicPlayer->playMp4(fileName);
+      }
+	  else if(stricmp(audioType, "avi") == 0)
+      {
+         advancedMusicPlayer->playAvi(fileName);
       }
     }
 };
@@ -83,7 +117,7 @@ class AudioPlayer : public MediaPlayer
          cout << "Playing mp3 file. Name: "  << fileName << endl;			
       }       
       //mediaAdapter is providing support to play other file formats
-      else if(stricmp(audioType, "vlc") == 0 || stricmp(audioType, "mp4") == 0)
+      else if(stricmp(audioType, "vlc") == 0 || stricmp(audioType, "mp4") == 0 || stricmp(audioType, "avi") == 0)
       {
          mediaAdapter = new MediaAdapter(audioType);
          mediaAdapter->play(audioType, fileName);
