@@ -1,0 +1,13 @@
+
+Adapter Pattern :
+
+ used to connect your existing system with a new vendor class , where neither of the existing system nor the vendor class can be changed , due to 
+
+It works as a bridge between two incompatible interfaces 
+
+
+We cannot change the existing code , hence we create an adapter which connects both the system and the new vendor
+
+Example : A laptop and a card cannot talk among themselves , but a card reader acts as an adapter between them , which allows them to communicate 
+
+
