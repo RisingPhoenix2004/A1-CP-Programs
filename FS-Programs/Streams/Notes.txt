@@ -1,0 +1,184 @@
+Java Streams API: Theory
+=========================
+
+What is a Stream?
+-----------------
+- A Stream is a sequence of elements supporting sequential and parallel aggregate operations.
+- It does **not** store data; it conveys elements from a data source (like a collection, array, or I/O channel).
+
+Key Features
+------------
+- **Functional-style operations:** filter, map, reduce, etc.
+- **Laziness-seeking:** Intermediate operations are lazy; computation happens only on terminal operations.
+- **Pipelining:** Multiple operations can be chained to form a pipeline.
+- **Parallelism:** Easy to process data in parallel.
+
+Stream Operations
+-----------------
+
+1. Stream Creation
+   - From collections: `collection.stream()`
+   - From arrays: `Arrays.stream(array)`
+   - From static methods: `Stream.of(...)`, `IntStream.range(...)`
+
+2. Intermediate Operations (return a stream)
+   - **filter(Predicate):** Selects elements matching a condition.
+   - **map(Function):** Transforms each element.
+   - **distinct():** Removes duplicates.
+   - **sorted():** Sorts elements.
+   - **limit(n):** Truncates the stream to n elements.
+   - **skip(n):** Skips the first n elements.
+   - **flatMap(Function):** Flattens nested structures.
+
+3. Terminal Operations (produce a result or side-effect)
+   - **forEach(Consumer):** Performs an action for each element.
+   - **collect(Collector):** Converts stream to a collection or other structure.
+   - **reduce(BinaryOperator):** Aggregates elements to a single value.
+   - **count():** Counts elements.
+   - **anyMatch/noneMatch/allMatch(Predicate):** Checks conditions.
+
+4. Parallel Streams
+   - Use `.parallelStream()` for parallel processing.
+
+5. Stream Characteristics
+   - Streams are **single-use**: Once consumed, they cannot be reused.
+   - Streams can be **infinite** (e.g., `Stream.iterate()`).
+
+
+Java Streams API: Practical Examples
+====================================
+
+// Stream creation
+List<Integer> nums = Arrays.asList(1, 2, 3, 4, 5);
+Stream<Integer> stream = nums.stream();
+
+// forEach
+nums.stream().forEach(System.out::println);
+
+// filter
+nums.stream().filter(n -> n % 2 == 0).forEach(System.out::println); // even numbers
+
+// map
+nums.stream().map(n -> n * n).forEach(System.out::println); // squares
+
+// collect
+List<Integer> evens = nums.stream().filter(n -> n % 2 == 0).collect(Collectors.toList());
+
+// reduce
+int sum = nums.stream().reduce(0, Integer::sum); // sum of all numbers
+
+// distinct, sorted, limit
+nums.stream().distinct().sorted().limit(3).forEach(System.out::println);
+
+// anyMatch
+boolean hasEven = nums.stream().anyMatch(n -> n % 2 == 0);
+
+// groupingBy
+Map<Integer, List<Integer>> grouped = nums.stream().collect(Collectors.groupingBy(n -> n % 2));
+
+// partitioningBy
+Map<Boolean, List<Integer>> partitioned = nums.stream().collect(Collectors.partitioningBy(n -> n > 3));
+
+// flatMap
+List<List<String>> list = Arrays.asList(Arrays.asList("a", "b"), Arrays.asList("c", "d"));
+List<String> flat = list.stream().flatMap(Collection::stream).collect(Collectors.toList());
+
+// parallelStream
+nums.parallelStream().forEach(System.out::println);
+
+// joining
+String result = nums.stream().map(String::valueOf).collect(Collectors.joining(", "));
+
+// IntStream
+IntStream.range(1, 5).forEach(System.out::println); // 1, 2, 3, 4
+
+Advanced Java Streams API
+========================
+
+Advanced Stream Operations
+-------------------------
+- **peek(Consumer):** For debugging, allows performing an action on each element as it passes through the stream.
+- **dropWhile(Predicate):** Skips elements while the predicate is true (Java 9+).
+- **takeWhile(Predicate):** Takes elements while the predicate is true (Java 9+).
+- **iterate(seed, predicate, next):** Creates a stream by iterative function (Java 9+).
+- **ofNullable(T):** Returns a stream with a single element or empty if null (Java 9+).
+- **findFirst(), findAny():** Returns an Optional describing some element of the stream.
+- **min(Comparator), max(Comparator):** Returns the minimum or maximum element.
+- **toArray():** Converts the stream to an array.
+
+Examples:
+---------
+// peek for debugging
+nums.stream().peek(System.out::println).filter(n -> n > 2).forEach(System.out::println);
+
+// dropWhile and takeWhile (Java 9+)
+List<Integer> list = Arrays.asList(1,2,3,4,5,1,2,3);
+list.stream().dropWhile(n -> n < 3).forEach(System.out::println); // drops 1,2
+list.stream().takeWhile(n -> n < 4).forEach(System.out::println); // takes 1,2,3
+
+// findFirst, findAny
+Optional<Integer> first = nums.stream().findFirst();
+Optional<Integer> any = nums.parallelStream().findAny();
+
+// min, max
+int min = nums.stream().min(Integer::compare).orElse(-1);
+int max = nums.stream().max(Integer::compare).orElse(-1);
+
+// toArray
+Integer[] arr = nums.stream().toArray(Integer[]::new);
+
+
+Collectors API
+==============
+- The `Collectors` class provides implementations of common mutable reduction operations (collecting elements into collections, summarizing, joining, grouping, partitioning, etc).
+
+Common Collectors:
+------------------
+- **toList(), toSet(), toMap()**: Collect elements into a List, Set, or Map.
+- **joining(CharSequence):** Concatenate elements into a single String.
+- **groupingBy(Function):** Group elements by a classifier function.
+- **partitioningBy(Predicate):** Partition elements into two groups.
+- **counting():** Count the number of elements.
+- **summarizingInt/Double/Long(ToIntFunction):** Get statistics (count, sum, min, average, max).
+- **mapping(Function, Collector):** Apply a mapping function before collecting.
+- **reducing(BinaryOperator):** Generalized reduction.
+
+Examples:
+---------
+// toMap
+Map<Integer, String> map = nums.stream().collect(Collectors.toMap(n -> n, n -> "Num:" + n));
+
+// joining
+String csv = nums.stream().map(String::valueOf).collect(Collectors.joining(", "));
+
+// groupingBy with downstream collector
+Map<Integer, List<Integer>> byRemainder = nums.stream().collect(Collectors.groupingBy(n -> n % 3));
+Map<Integer, Long> countByRemainder = nums.stream().collect(Collectors.groupingBy(n -> n % 3, Collectors.counting()));
+
+// partitioningBy
+Map<Boolean, List<Integer>> partitioned = nums.stream().collect(Collectors.partitioningBy(n -> n > 2));
+
+// summarizingInt
+IntSummaryStatistics stats = nums.stream().collect(Collectors.summarizingInt(Integer::intValue));
+// stats.getCount(), stats.getSum(), stats.getAverage(), stats.getMin(), stats.getMax()
+
+// mapping
+List<String> squares = nums.stream().collect(Collectors.mapping(n -> "Square:" + (n*n), Collectors.toList()));
+
+// reducing
+int product = nums.stream().collect(Collectors.reducing(1, (a, b) -> a * b));
+
+// Custom collector (collecting to a StringBuilder)
+StringBuilder sb = nums.stream().collect(StringBuilder::new, (b, n) -> b.append(n).append("-"), StringBuilder::append);
+
+// flatMapping (Java 9+)
+List<List<String>> nested = Arrays.asList(Arrays.asList("a", "b"), Arrays.asList("c"));
+List<String> flat = nested.stream().collect(Collectors.flatMapping(Collection::stream, Collectors.toList()));
+
+// teeing (Java 12+)
+// Combines two collectors
+var result = nums.stream().collect(Collectors.teeing(
+    Collectors.summingInt(Integer::intValue),
+    Collectors.counting(),
+    (sum, count) -> "Sum: " + sum + ", Count: " + count
+));
