@@ -66,7 +66,7 @@ public class TopActiveUsers {
                     optionalMsg -> optionalMsg.get().getTimestamp()
                 )
             ));
-
+        System.out.println(lastSeen);
         List<String> topUsers = messageCount.keySet().stream()
             .sorted(Comparator
                 .comparing((String user) -> lastSeen.get(user)).reversed()
