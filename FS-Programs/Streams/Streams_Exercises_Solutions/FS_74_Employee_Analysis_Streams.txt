@@ -1,0 +1,149 @@
+/* You are given details of n employees in an organization. Each employee record contains:
+	Employee ID: an integer
+	Name: a string (single line)
+	Department: a string (single line)
+	Salary: a floating-point number
+
+Write a Java program that:
+
+	1.Finds the top-salaried employee in each department.
+	2.Prints each department name (in ascending lexicographic order) along with all employee names in that department (sorted by name).
+	3.Sorts the entire employee list by name and prints each record.
+
+Use the Java Stream API (groupingBy, maxBy, mapping, sorted, etc.) to perform these operations.
+
+Input Format:
+-------------
+n
+id₁
+name₁
+department₁
+salary₁
+id₂
+name₂
+department₂
+salary₂
+...
+idₙ
+nameₙ
+departmentₙ
+salaryₙ
+.
+where, 
+n: number of employees
+For each employee i (1 ≤ i ≤ n):
+	idᵢ (integer)
+	nameᵢ (string)
+	departmentᵢ (string)
+	salaryᵢ (double)
+	
+Output Format:
+--------------
+1) Top-salaried employee in each department:
+  <Dept₁> => <Name> (<Salary>)
+  <Dept₂> => <Name> (<Salary>)
+  ...
+  
+2) Departments (asc) with their employees:
+  <Dept₁>: NameA, NameB, …
+  <Dept₂>: NameC, NameD, …
+  ...
+  
+3) All employees sorted by name:
+  <id>:<Name>(<Dept>,$<Salary>)
+  ...
+  
+ */
+ 
+import java.util.*;
+import java.util.stream.*;
+
+public class EmployeeAnalysis {
+    static class Employee {
+        private final int    id;
+        private final String name;
+        private final String department;
+        private final double salary;
+        
+        public Employee(int id, String name, String department, double salary) {
+            this.id         = id;
+            this.name       = name;
+            this.department = department;
+            this.salary     = salary;
+        }
+        
+        public int    getId()         { return id; }
+        public String getName()       { return name; }
+        public String getDepartment() { return department; }
+        public double getSalary()     { return salary; }
+        
+        @Override
+        public String toString() {
+            return String.format("%d:%s(%s,$%.2f)", id, name, department, salary);
+        }
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        //System.out.print("Enter number of employees: ");
+        int n = Integer.parseInt(scanner.nextLine().trim());
+        
+        List<Employee> employees = new ArrayList<>();
+        for (int i = 1; i <= n; i++) {
+            //System.out.printf("Employee %d/%d ID: ", i, n);
+            int id = Integer.parseInt(scanner.nextLine().trim());
+            
+            //System.out.print("  Name: ");
+            String name = scanner.nextLine().trim();
+            
+            //System.out.print("  Department: ");
+            String dept = scanner.nextLine().trim();
+            
+            //System.out.print("  Salary: ");
+            double sal = Double.parseDouble(scanner.nextLine().trim());
+            
+            employees.add(new Employee(id, name, dept, sal));
+        }
+        
+        System.out.println("\n1) Top-salaried employee in each department:");
+        Map<String, Optional<Employee>> topByDept = employees.stream()
+            .collect(Collectors.groupingBy(
+                Employee::getDepartment,
+                Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary))
+            ));
+        
+        topByDept.entrySet().stream()
+            .sorted(Map.Entry.comparingByKey())
+            .forEach(e -> {
+                Employee emp = e.getValue().orElseThrow();
+                System.out.printf("  %s => %s (%.2f)%n",
+                    e.getKey(), emp.getName(), emp.getSalary());
+            });
+        
+        System.out.println("\n2) Departments (asc) with their employees:");
+        Map<String, List<String>> namesByDept = employees.stream()
+            .collect(Collectors.groupingBy(
+                Employee::getDepartment,
+                Collectors.mapping(Employee::getName, Collectors.toList())
+            ));
+        
+        namesByDept.keySet().stream()
+            .sorted()
+            .forEach(dept -> {
+                System.out.printf("  %s: %s%n",
+                    dept,
+                    namesByDept.get(dept).stream()
+                                 .sorted()
+                                 .collect(Collectors.joining(", "))
+                );
+            });
+        
+        System.out.println("\n3) All employees sorted by name:");
+        employees.stream()
+            .sorted(Comparator.comparing(Employee::getName))
+            .forEach(e -> System.out.println("  " + e));
+        
+        scanner.close();
+    }
+}

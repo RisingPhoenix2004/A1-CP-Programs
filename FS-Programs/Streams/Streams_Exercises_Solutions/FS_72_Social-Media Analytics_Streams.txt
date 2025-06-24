@@ -1,0 +1,94 @@
+/*A chat application stores each message with:
+	A user ID (String)
+	Message content (String)
+	Timestamp (Instant)
+
+Write a program that:
+	1. Counts how many messages each user has sent.
+	2. Determines the three users with the highest message counts.
+	3. Prints those top three user IDs in descending order of activity
+
+Expected Output:
+----------------
+Top 3 active users: [bob, alice, carol]
+*/
+import java.time.Instant;
+import java.util.*;
+import java.util.stream.*;
+
+public class TopActiveUsers {
+    // Domain class
+    static class Message {
+        private final String userId;
+        private final String content;
+        private final Instant timestamp;
+        public Message(String userId, String content, Instant timestamp) {
+            this.userId    = userId;
+            this.content   = content;
+            this.timestamp = timestamp;
+        }
+        public String getUserId()    { return userId; }
+        public String getContent()   { return content; }
+        public Instant getTimestamp(){ return timestamp; }
+        @Override
+        public String toString() {
+            return String.format("[%s] %s: %s",
+                timestamp, userId, content);
+        }
+    }
+
+    public static void main(String[] args) {
+        // 1. sample messages with varied timestamps
+        Instant now = Instant.now();
+        List<Message> messages = List.of(
+            new Message("alice", "Hi there!",          now),
+            new Message("bob",   "Hello!",             now.plusSeconds(5)),
+            new Message("alice", "How are you?",       now.plusSeconds(10)),
+            new Message("carol", "Good morning",       Instant.parse("2025-06-17T09:30:00Z")),
+            new Message("bob",   "I'm fine.",          Instant.parse("2022-06-17T09:31:00Z")),
+            new Message("dave",  "Hey!",               now.plusSeconds(15)),
+            new Message("alice", "Let's meet up",      Instant.parse("2024-06-17T09:32:30Z")),
+            new Message("bob",   "Sure!",              now.plusSeconds(20))
+        );
+
+        /*System.out.println("All messages:");
+        messages.forEach(System.out::println);*/
+
+        // 2. count messages per user
+        Map<String, Long> counts = messages.stream()
+            .collect(Collectors.groupingBy(
+                Message::getUserId,
+                Collectors.counting()
+            ));
+
+        // 3. compute last-seen timestamp per user
+        Map<String, Instant> lastSeen = messages.stream()
+            .collect(Collectors.toMap(
+                Message::getUserId,
+                Message::getTimestamp,
+                (t1, t2) -> t1.isAfter(t2) ? t1 : t2
+            ));
+
+        // sort users by recency desc, then count desc
+        List<String> sortedUsers = counts.keySet().stream()
+            .sorted(Comparator
+                .<String, Instant>comparing(u -> lastSeen.get(u))
+                .reversed()
+                .thenComparing(u -> counts.get(u), Comparator.reverseOrder())
+            )
+            .collect(Collectors.toList());
+
+        /*System.out.println("\nUsers sorted by last-seen & count:");
+        sortedUsers.forEach(u -> 
+            System.out.printf("  %s (count=%d, last=%s)%n",
+                u, counts.get(u), lastSeen.get(u))
+        );*/
+
+        // 4. top 3 by that ordering
+        List<String> top3 = sortedUsers.stream()
+            .limit(3)
+            .collect(Collectors.toList());
+
+        System.out.println("\nTop 3 active users : " + top3);
+    }
+}
